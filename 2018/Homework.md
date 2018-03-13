@@ -9,9 +9,9 @@
 ## 4. Lists, Collections   
 ## 5. RegEx and the power of Strings
 ## 6. Sorting & I/O
-## 6. Debugging & Errors & Debug strategies
-## 7. Python Packages
-## 8. Practical Python, Good practices
+## 7. Debugging & Errors & Debug strategies
+## 8. Python Packages
+## 9. Practical Python, Good practices
 ## 10. OOP
 ## 11. Time, Space and documentation
 ## 12. Numpy & Plotting with matplotlib
