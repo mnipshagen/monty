@@ -1,6 +1,7 @@
 MIT License
 
-Copyright (c) 2017-2018 Sebastian Höffner, Aline Vilks
+Copyright (c) 2017-2018 Sebastian Höffner, Aline Vilks for the 2017 version
+Copyright (c) 2018-2019 Moritz Nipshagen, Antonia Hain for the 2018 version
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
