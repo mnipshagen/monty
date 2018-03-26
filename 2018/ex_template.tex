@@ -1,0 +1,38 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+
+
+\title{BPP Exercise 1 - print("Hello World")}
+\author{A. Hain, M. Nipshagen}
+\date{09.04.2018, 8:00}
+
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date
+\makeatother
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\thetitle}
+\fancyhead[C]{}
+\fancyhead[R]{\theauthor}
+\renewcommand{\headrulewidth}{0.4pt} %obere Trennlinie
+\fancyfoot[L]{Due: \thedate}
+\fancyfoot[R]{\thepage} %Seitennummer
+\renewcommand{\footrulewidth}{0.4pt}
+\begin{document}
+
+The deadline for this exercise sheet is \textbf{Monday, \thedate.}
+
+\section*{Introductory Words}
+In case we have some information that doesn't directly concern the current exercises.
+
+\section{Task}
+Lorem ipsum blah
+
+\section{Another Task}
+Lorem impsum blah part 2
+
+\end{document}
