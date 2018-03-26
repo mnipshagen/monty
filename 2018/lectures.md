@@ -10,10 +10,10 @@
 - What is programming?
     - Where?
         - Programming is everywhere
-    - Why?
-        - automation and shit
     - What is an algorithm?
         - eine endliche abfolge von einzelanweisungen
+    - Why?
+        - automation and shit
     - In and outside of academia
         - Differences and shite.
 - Why python?
