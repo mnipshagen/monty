@@ -62,3 +62,14 @@
 12. Numpy & Plotting with matplotlib
 13. Outlook and wrapping up
 14. TBA
+
+## Slide design
+### PowerPoint
+- Template is created
+- This is never going to change. Too much effort.
+
+### Latex
+- Singular files for reuse
+    - schedule
+    - header, layout, etc
+- 
