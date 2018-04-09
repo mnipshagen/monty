@@ -7,6 +7,8 @@
 *.aux
 *.fdb_latexmk
 *.fls
+*.cpt
+*.log
 output
 submissions
 .DS_Store
