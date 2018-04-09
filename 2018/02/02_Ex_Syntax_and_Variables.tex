@@ -1,9 +1,49 @@
 \documentclass{article}
 
+\usepackage{amsmath}
 \usepackage{fancyhdr}
 \usepackage{graphicx}
 \graphicspath{{}}
 
+%% some colours
+\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+
+%%%%%%%%%%%%%% CODE STUFF %%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{listings} % for code display
+% setting code style
+\newcommand\pythonstyle{\lstset{
+language=Python,
+backgroundcolor=\color{backcolour},
+otherkeywords={self},             % Add keywords here
+keywordstyle=\color{deepblue},
+emphstyle=\color{deepred},    % Custom highlighting style
+stringstyle=\color{deepgreen},
+frame=tb,                         % Any extra options here
+showstringspaces=false            % 
+}}
+
+% Python environment
+\lstnewenvironment{python}[1][]{
+    \pythonstyle
+    \lstset{#1}
+}{}
+
+% Python for external files
+\newcommand\pythonexternal[2][]{{
+    \pythonstyle
+    \lstinputlisting[#1]{#2}
+}}
+
+% Python for inline
+\newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \title{BPP Exercise 2 - The Very Basics}
 \author{A. Hain, M. Nipshagen}
@@ -24,6 +64,12 @@
 \fancyfoot[L]{Due: \thedate}
 \fancyfoot[R]{\thepage} %Seitennummer
 \renewcommand{\footrulewidth}{0.4pt}
+
+% include solutions
+\newcommand\sol[1]{#1}
+% do not include solutions
+% \newcommand\sol[1]{       }
+
 \begin{document}
 
 The deadline for this exercise sheet is \textbf{Monday, \thedate.}
@@ -47,9 +93,27 @@ for variables to save the following things in? Explain your answers.
 \item if the student passed the exam or not
 \end{enumerate}
 
+\sol{\begin{enumerate}
+    \item student's name: String
+    \item matriculation number: Int or String
+    \item Exam Grade: Float
+    \item Passed: Boolean
+\end{enumerate}}
+
 \subsection{}
-Fast foward some time, you need to conduct the experiment.
-Something something still need to come up with some sort of experiment
+Fast foward some time, you need to conduct the experiment. In the experiment you
+present subjects with a short stimulus and measure their score based on reaction.
+Each subject in the end has 4 scores, and you calculate their overall performance
+with the following formula $$ \dfrac{4*Score1 + Score2 + 0.5*Score3 + \sqrt{Score4}}{2\pi} $$
+\emph{Note:} Totally arbitrary forumla with probably no real world use.\\
+You can approximate \(\pi \) with 3.14 or you can use the following to get pi in python:
+\begin{python}
+    import math.pi
+
+    print(pi)
+\end{python}
+
+Write a function that calculates and returns the overall performance of a subject when you pass it the five scores.
 
 \section{Some Calculations [insert better task name maybe]}
 In this task, you will have to write two small Python programs. Please save each
@@ -63,14 +127,13 @@ Write a Python script which will calculate the final grade out of those three gr
 and print the result. Try to use suitable names for your variables and test your program with
 a few different values.
 
-\subsection{Also needs title}
-After passing the class with -of course- 1.0, you want to treat yourself by baking
-a chocolate cake. You find a nice recipe for the batter online. The quantities of
+\subsection{The cake is no lie}
+After passing the class, you want to treat yourself by baking
+a chocolate cake. You find a nice recipe for the dough online. The quantities of
 the ingredients are perfect to make one cake in a circular cake mould with a diameter
 of 28cm and a height of 8cm. However, you only have a cake mould with a diameter of 24cm and a height of 6.5cm.\\
-Write a script that determines by which factor you need to multiply the cake ingredients to
-make the perfect amount of batter for your smaller cake mould and prints the result.\\What is the factor if you only
-have a cake mould with a 20cm diameter/6cm height? Or 18cm diameter/6cm height?\\
+What is the factor if you only have a cake mould with a 20cm diameter/6cm height or 18cm diameter/6cm height?\\
+Write a script that contains a function to determine by which factor you need to multiply the cake ingredients to make the perfect amount of dough for your smaller cake moulds and prints the result.\\
 
 \begin{center}
 \includegraphics[scale=0.6]{Ex_2_Cake}

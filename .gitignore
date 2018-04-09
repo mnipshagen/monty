@@ -3,6 +3,10 @@
 *.swo
 *.zsh
 *.zip
+*.synctex.gz
+*.aux
+*.fdb_latexmk
+*.fls
 output
 submissions
 .DS_Store
