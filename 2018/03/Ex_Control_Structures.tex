@@ -1,0 +1,53 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\graphicspath{{}}
+
+
+\title{BPP Exercise 3 - Directing the Flow}
+\author{A. Hain, M. Nipshagen}
+\date{23.04.2018, 8:00}
+
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date
+\makeatother
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\thetitle}
+\fancyhead[C]{}
+\fancyhead[R]{\theauthor}
+\renewcommand{\headrulewidth}{0.4pt} %obere Trennlinie
+\fancyfoot[L]{Due: \thedate}
+\fancyfoot[R]{\thepage} %Seitennummer
+\renewcommand{\footrulewidth}{0.4pt}
+
+% include solutions
+\newcommand\sol[1]{#1}
+% do not include solutions
+% \newcommand\sol[1]{}
+
+\begin{document}
+
+The deadline for this exercise sheet is \textbf{Monday, \thedate.}
+%
+%\section*{Introductory Words}
+%In case we have some information that doesn't directly concern the current exercises.
+%
+\section{Decision Making}
+Exam situation again. Write a function \texttt{passed} that takes a grade
+as a parameter and returns whether the student passed or failed.
+\subsection{}
+
+\subsection{}
+
+\section{}
+
+\subsection{}
+
+\subsection{}
+
+\end{document}
