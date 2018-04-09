@@ -1,38 +1,57 @@
 \documentclass{article}
 
+\usepackage{amsmath}
 \usepackage{fancyhdr}
+\usepackage{graphicx}
+\graphicspath{{}}
+
+%% some colours
+\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+\definecolor{backcolour}{rgb}{0.95,0.96,0.93}
 
 
-\title{BPP Exercise 1 - print("Hello World")}
-\author{A. Hain, M. Nipshagen}
-\date{09.04.2018, 8:00}
+%%%%%%%%%%%%%% CODE STUFF %%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{cprotect} % to be used in sol
+\usepackage{listings} % for code display
+% setting code style
+\newcommand\pythonstyle{\lstset{
+        language=Python,
+        backgroundcolor=\color{backcolour},
+		basicstyle=\footnotesize,
+		otherkeywords={self},
+		keywordstyle=\footnotesize\color{deepblue},
+		emph={__init__},
+		emphstyle=\footnotesize\color{deepred},
+		stringstyle=\color{deepgreen},
+		frame=single,
+		showstringspaces=false  ,
+		breaklines=true,
+		numbers=left,
+		numberstyle=\footnotesize,
+		tabsize=4,
+		breakatwhitespace=false
+	}}
 
-\makeatletter
-\let\thetitle\@title
-\let\theauthor\@author
-\let\thedate\@date
-\makeatother
+% Python environment
+\lstnewenvironment{python}[1][]{
+    \pythonstyle
+    \lstset{#1}
+}{}
 
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[L]{\thetitle}
-\fancyhead[C]{}
-\fancyhead[R]{\theauthor}
-\renewcommand{\headrulewidth}{0.4pt} %obere Trennlinie
-\fancyfoot[L]{Due: \thedate}
-\fancyfoot[R]{\thepage} %Seitennummer
-\renewcommand{\footrulewidth}{0.4pt}
-\begin{document}
+% Python for external files
+\newcommand\pythonexternal[2][]{{
+    \pythonstyle
+    \lstinputlisting[#1]{#2}
+}}
 
-The deadline for this exercise sheet is \textbf{Monday, \thedate.}
+% Python for inline
+\newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
 
-\section*{Introductory Words}
-In case we have some information that doesn't directly concern the current exercises.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Task}
-Lorem ipsum blah
-
-\section{Another Task}
-Lorem impsum blah part 2
-
-\end{document}
+% include solutions
+\newcommand\sol[1]{{\large\textbf{\\Solution:}}#1}
