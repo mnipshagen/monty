@@ -1,8 +1,4 @@
-\documentclass{article}
-
-\usepackage{fancyhdr}
-\usepackage{graphicx}
-\graphicspath{{}}
+\input{../ex_template.tex}
 
 
 \title{BPP Exercise 3 - Directing the Flow}
@@ -26,7 +22,7 @@
 \renewcommand{\footrulewidth}{0.4pt}
 
 % include solutions
-\newcommand\sol[1]{#1}
+\renewcommand\sol[1]{#1}
 % do not include solutions
 % \newcommand\sol[1]{}
 
@@ -37,16 +33,117 @@ The deadline for this exercise sheet is \textbf{Monday, \thedate.}
 %\section*{Introductory Words}
 %In case we have some information that doesn't directly concern the current exercises.
 %
-\section{Decision Making}
-Exam situation again. Write a function \texttt{passed} that takes a grade
+\section{Boolean Operators}
+Determine the truth values of the following boolean operators for each configuration
+of truth values as given in the tables
+
+\subsection{}
+\begin{tabular}{| c | c | c | c |}
+  \hline
+  \textbf{a} & \textbf{b} & \textbf{c} & \textbf{(b or c) and (a or c)} \\
+  \hline
+  true & true & true & \sol{true} \\
+  \hline
+  true & true & false & \sol{true} \\
+  \hline
+  true & false & true & \sol{true} \\
+  \hline
+  true & false & false & \sol{false} \\
+  \hline
+  false & true & true & \sol{true} \\
+  \hline
+  false & true & false & \sol{false} \\
+  \hline
+  false & false & true & \sol{true} \\
+  \hline
+  false & false & false & \sol{false} \\
+  \hline
+\end{tabular}
+
+\subsection{}
+\begin{tabular}{| c | c | c | c |}
+  \hline
+  \textbf{a} & \textbf{b} & \textbf{c} & \textbf{a or (b and c) and (not c or not a)} \\
+  \hline
+  true & true & true & \sol{false} \\
+  \hline
+  true & true & false & \sol{true} \\
+  \hline
+  true & false & true & \sol{false} \\
+  \hline
+  true & false & false & \sol{true} \\
+  \hline
+  false & true & true & \sol{true} \\
+  \hline
+  false & true & false & \sol{false} \\
+  \hline
+  false & false & true & \sol{false} \\
+  \hline
+  false & false & false & \sol{false} \\
+  \hline
+\end{tabular}
+
+
+\section{Prof Strikes Again}
+Remember the task from last week? Now that your prof computed your numerical grade, the
+functionality of this program shall be extended by automatically determining whether
+someone passed the class or not based on this grade.\\
+Write a function \texttt{passed} that takes a grade
 as a parameter and returns whether the student passed or failed.
-\subsection{}
 
-\subsection{}
+\cprotect\sol{
+\begin{python}
+def passed(grade):
+  return grade <= 4.0
+\end{python}
+}
 
-\section{}
+\section{Loops}
 
-\subsection{}
+\subsection{N Bottles of Beer}
+Similar to Hello World programs, 99 bottles programs give us an idea of how
+a programming language looks as they show the basic loop concepts.
+The 99 bottles program “sings” a little song which goes like this:\\\\
+\textit{
+99 bottles of beer on the wall, 99 bottles of beer. Take one down and
+pass it around, 98 bottles of beer on the wall.\\
+98 bottles of beer on the wall, 98 bottles of beer. Take one down and
+pass it around, 97 bottles of beer on the wall.\\
+. . .\\
+1 bottle of beer on the wall, 1 bottle of beer. Take one down and
+pass it around, no more bottles of beer on the wall.\\\\
+}
+Write a function \texttt{n\_bottles(n)} in the script \texttt{n\_bottles.py} which
+sings the song starting with n bottles instead of 99. If n is bigger than 99 or
+smaller than 5 print a message that you want to sing a funnier song than n bottles
+(of course replace n with the current n). Your final result may also structure
+the verses in a different layout.
+
+\cprotect\sol{
+\begin{python}
+def bottles(n):
+  return ('1 bottle' if n == 1 else str(n) + ' bottles') + ' of beer'
+
+def n_bottles(n):
+  if not 5 <= n <= 99:
+    print('I want to sing funnier songs than "'
+      + bottles(n) + '".\n')
+    return
+  while n > 0:
+    print(bottles(n) + ' on the wall,\n ' + bottles(n) + '.')
+    n = n - 1
+    print('Take one down and pass it around,\n '
+      + bottles(n if n > 0 else 'no more') + ' on the wall.\n')
+
+n_bottles(2)
+n_bottles(1013)
+n_bottles(5)
+\end{python}
+Output:
+
+% add output. make format pretty.
+}
+
 
 \subsection{}
 
