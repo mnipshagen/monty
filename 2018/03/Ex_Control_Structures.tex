@@ -84,7 +84,6 @@ of truth values as given in the tables
 \end{tabular}
 
 
-
 \section{Prof Strikes Again}
 Remember the task from last week? Now that your prof computed your numerical grade, the
 functionality of this program shall be extended by automatically determining whether
@@ -99,8 +98,52 @@ def passed(grade):
 \end{python}
 }
 
+\section{Loops}
 
-\subsection{}
+\subsection{N Bottles of Beer}
+Similar to Hello World programs, 99 bottles programs give us an idea of how
+a programming language looks as they show the basic loop concepts.
+The 99 bottles program “sings” a little song which goes like this:\\\\
+\textit{
+99 bottles of beer on the wall, 99 bottles of beer. Take one down and
+pass it around, 98 bottles of beer on the wall.\\
+98 bottles of beer on the wall, 98 bottles of beer. Take one down and
+pass it around, 97 bottles of beer on the wall.\\
+. . .\\
+1 bottle of beer on the wall, 1 bottle of beer. Take one down and
+pass it around, no more bottles of beer on the wall.\\\\
+}
+Write a function \texttt{n\_bottles(n)} in the script \texttt{n\_bottles.py} which
+sings the song starting with n bottles instead of 99. If n is bigger than 99 or
+smaller than 5 print a message that you want to sing a funnier song than n bottles
+(of course replace n with the current n). Your final result may also structure
+the verses in a different layout.
+
+\cprotect\sol{
+\begin{python}
+def bottles(n):
+  return ('1 bottle' if n == 1 else str(n) + ' bottles') + ' of beer'
+
+def n_bottles(n):
+  if not 5 <= n <= 99:
+    print('I want to sing funnier songs than "'
+      + bottles(n) + '".\n')
+    return
+  while n > 0:
+    print(bottles(n) + ' on the wall,\n ' + bottles(n) + '.')
+    n = n - 1
+    print('Take one down and pass it around,\n '
+      + bottles(n if n > 0 else 'no more') + ' on the wall.\n')
+
+n_bottles(2)
+n_bottles(1013)
+n_bottles(5)
+\end{python}
+Output:
+
+% add output. make format pretty.
+}
+
 
 \subsection{}
 
