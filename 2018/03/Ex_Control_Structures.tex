@@ -1,8 +1,4 @@
-\documentclass{article}
-
-\usepackage{fancyhdr}
-\usepackage{graphicx}
-\graphicspath{{}}
+\input{../ex_template.tex}
 
 
 \title{BPP Exercise 3 - Directing the Flow}
@@ -26,7 +22,7 @@
 \renewcommand{\footrulewidth}{0.4pt}
 
 % include solutions
-\newcommand\sol[1]{#1}
+\renewcommand\sol[1]{#1}
 % do not include solutions
 % \newcommand\sol[1]{}
 
@@ -37,14 +33,70 @@ The deadline for this exercise sheet is \textbf{Monday, \thedate.}
 %\section*{Introductory Words}
 %In case we have some information that doesn't directly concern the current exercises.
 %
-\section{Decision Making}
-Exam situation again. Write a function \texttt{passed} that takes a grade
+\section{Boolean Operators}
+Determine the truth values of the following boolean operators for each configuration
+of truth values as given in the tables
+
+\subsection{}
+\begin{tabular}{| c | c | c | c |}
+  \hline
+  \textbf{a} & \textbf{b} & \textbf{c} & \textbf{(b or c) and (a or c)} \\
+  \hline
+  true & true & true & \sol{true} \\
+  \hline
+  true & true & false & \sol{true} \\
+  \hline
+  true & false & true & \sol{true} \\
+  \hline
+  true & false & false & \sol{false} \\
+  \hline
+  false & true & true & \sol{true} \\
+  \hline
+  false & true & false & \sol{false} \\
+  \hline
+  false & false & true & \sol{true} \\
+  \hline
+  false & false & false & \sol{false} \\
+  \hline
+\end{tabular}
+
+\subsection{}
+\begin{tabular}{| c | c | c | c |}
+  \hline
+  \textbf{a} & \textbf{b} & \textbf{c} & \textbf{a or (b and c) and (not c or not a)} \\
+  \hline
+  true & true & true & \sol{false} \\
+  \hline
+  true & true & false & \sol{true} \\
+  \hline
+  true & false & true & \sol{false} \\
+  \hline
+  true & false & false & \sol{true} \\
+  \hline
+  false & true & true & \sol{true} \\
+  \hline
+  false & true & false & \sol{false} \\
+  \hline
+  false & false & true & \sol{false} \\
+  \hline
+  false & false & false & \sol{false} \\
+  \hline
+\end{tabular}
+
+
+
+\section{Prof Strikes Again}
+
+Write a function \texttt{passed} that takes a grade
 as a parameter and returns whether the student passed or failed.
-\subsection{}
 
-\subsection{}
+\cprotect\sol{
+\begin{python}
+def passed(grade):
+  return grade <= 4.0
+\end{python}
+}
 
-\section{}
 
 \subsection{}
 
