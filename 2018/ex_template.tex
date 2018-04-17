@@ -12,7 +12,6 @@
 \definecolor{deepgreen}{rgb}{0,0.5,0}
 \definecolor{backcolour}{rgb}{0.95,0.96,0.93}
 
-
 %%%%%%%%%%%%%% CODE STUFF %%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{cprotect} % to be used in sol
@@ -52,6 +51,16 @@
 \newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% setting the style for ex documents
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\thetitle}
+\fancyhead[C]{}
+\fancyhead[R]{\theauthor}
+\renewcommand{\headrulewidth}{0.4pt} %obere Trennlinie
+\fancyfoot[L]{Due: \thedate}
+\fancyfoot[R]{\thepage} %Seitennummer
+\renewcommand{\footrulewidth}{0.4pt}
 
 % include solutions
 \newcommand\sol[1]{{\large\textbf{\\Solution:}}#1}
