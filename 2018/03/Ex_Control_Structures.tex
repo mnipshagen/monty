@@ -11,20 +11,8 @@
 \let\thedate\@date
 \makeatother
 
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[L]{\thetitle}
-\fancyhead[C]{}
-\fancyhead[R]{\theauthor}
-\renewcommand{\headrulewidth}{0.4pt} %obere Trennlinie
-\fancyfoot[L]{Due: \thedate}
-\fancyfoot[R]{\thepage} %Seitennummer
-\renewcommand{\footrulewidth}{0.4pt}
-
-% include solutions
-\renewcommand\sol[1]{#1}
 % do not include solutions
-% \newcommand\sol[1]{}
+% \renewcommand\sol[1]{}
 
 \begin{document}
 
@@ -84,7 +72,7 @@ of truth values as given in the tables
 \end{tabular}
 
 
-\section{Prof Strikes Again}
+\section{Warm up -- Prof Strikes Again}
 Remember the task from last week? Now that your prof computed your numerical grade, the
 functionality of this program shall be extended by automatically determining whether
 someone passed the class or not based on this grade.\\
@@ -122,7 +110,7 @@ the verses in a different layout.
 \cprotect\sol{
 \begin{python}
 def bottles(n):
-  return ('1 bottle' if n == 1 else str(n) + ' bottles') + ' of beer'
+  return ('1 bottle' if (n == 1) else str(n) + ' bottles') + ' of beer'
 
 def n_bottles(n):
   if not 5 <= n <= 99:
