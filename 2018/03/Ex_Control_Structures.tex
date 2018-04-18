@@ -12,7 +12,7 @@
 \makeatother
 
 % do not include solutions
-% \renewcommand\sol[1]{}
+\renewcommand\sol[1]{}
 
 \begin{document}
 
@@ -133,6 +133,53 @@ Output:
 }
 
 
-\subsection{}
+\subsection{Return of the turtle}
+\FloatBarrier
+You hopefully remember the turtle from the first week -- you drew a Sain Nicholas' house with it.
+This time we will draw even more houes! And some trees to keep them company.\\
+Write a script \texttt{turtle.py}. Develop a function \texttt{draw\_house} that draws a house -- 
+it doesn't need to be the Saint Nicholas' house, but you can recylce your code if you like.
+Then write a function \texttt{draw\_tree{height}} that draws a tree of a given "height".
+The height serves a double purpose as the branching factor of the tree. Your tree is going to be a fractal,
+which means that it will be a pattern that repeats itself recursively.
+
+\begin{figure}[h]
+  \includegraphics[scale=0.8]{recursive_tree}
+  \caption{Example Tree}
+  \label{fig:tree:1}
+\end{figure}
+
+
+\noindent To build the tree follow this algorithm:\\
+\begin{lstlisting}
+To draw a tree with height h:
+  If height h is 0, stop.
+  Draw a line of length L * h.
+  Rotate left by angle A.
+  Draw a tree of height h - 1.
+  Rotate right by angle 2A.
+  Draw a tree of height h - 1.
+  Rotate left by angle A.
+  Move back to the beginning of the line.  
+\end{lstlisting}
+
+\noindent The resulting tree should look similar to Figure \ref{fig:tree:1}. Choose $A$ and $L$ as you like, be creative!\\
+Now draw a simple landscape. Draw a house, a small tree, a big tree, a small tree, and repeat this pattern a couple of times
+(Figure \ref{fig:world:flat}). Or build a different one. Just make it repetitive (Yes, use loops).
+
+\begin{figure}[h]
+	\includegraphics[width=\textwidth]{flat_world}
+	\caption{Flat World}
+	\label{fig:world:flat}
+\end{figure}
+
+\noindent\textbf{Bonus}: Can you build a round world like in Figure \ref{fig:world:round}?
+
+\begin{figure}[h]
+	\includegraphics[width=\textwidth]{round_world}
+	\caption{Round World}
+	\label{fig:world:round}
+\end{figure}
+
 
 \end{document}
