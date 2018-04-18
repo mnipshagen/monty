@@ -16,3 +16,4 @@ submissions
 _site
 __pycache__
 ~$*
+.ipynb_checkpoints
