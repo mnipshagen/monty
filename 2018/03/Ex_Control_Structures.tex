@@ -71,6 +71,28 @@ of truth values as given in the tables
   \hline
 \end{tabular}
 
+\subsection{}
+\begin{tabular}{| c | c | c | c |}
+  \hline
+  \textbf{a} & \textbf{b} & \textbf{c} & \textbf{not(not(b and not(c or a)))} \\
+  \hline
+  true & true & true & \sol{false} \\
+  \hline
+  true & true & false & \sol{false} \\
+  \hline
+  true & false & true & \sol{false} \\
+  \hline
+  true & false & false & \sol{false} \\
+  \hline
+  false & true & true & \sol{false} \\
+  \hline
+  false & true & false & \sol{true} \\
+  \hline
+  false & false & true & \sol{false} \\
+  \hline
+  false & false & false & \sol{false} \\
+  \hline
+\end{tabular}
 
 \section{Warm up -- Prof Strikes Again}
 Remember the task from last week? Now that your prof computed your numerical grade, the
@@ -128,16 +150,40 @@ n_bottles(1013)
 n_bottles(5)
 \end{python}
 Output:
-
-% add output. make format pretty.
+\texttt{
+\small{\\
+I want to sing funnier songs than "2 bottles of beer".\\\\
+I want to sing funnier songs than "1013 bottles of beer".\\\\
+5 bottles of beer on the wall,\\
+\indent 5 bottles of beer.\\
+Take one down and pass it around,\\
+\indent 4 bottles of beer on the wall.\\\\
+4 bottles of beer on the wall,\\
+\indent 4 bottles of beer.\\
+Take one down and pass it around,\\
+\indent 3 bottles of beer on the wall.\\\\
+3 bottles of beer on the wall,\\
+\indent 3 bottles of beer.\\
+Take one down and pass it around,\\
+\indent 2 bottles of beer on the wall.\\\\
+2 bottles of beer on the wall,\\
+\indent 2 bottles of beer.\\
+Take one down and pass it around,\\
+\indent 1 bottle of beer on the wall.\\\\
+1 bottle of beer on the wall,\\
+\indent 1 bottle of beer.\\
+Take one down and pass it around,\\
+\indent no more bottles of beer on the wall.\\
+}
+}
 }
 
 
 \subsection{Return of the turtle}
 \FloatBarrier
-You hopefully remember the turtle from the first week -- you drew a Sain Nicholas' house with it.
+You hopefully remember the turtle from the first week -- you drew a Saint Nicholas' house with it.
 This time we will draw even more houes! And some trees to keep them company.\\
-Write a script \texttt{turtle.py}. Develop a function \texttt{draw\_house} that draws a house -- 
+Write a script \texttt{turtle.py}. Develop a function \texttt{draw\_house} that draws a house --
 it doesn't need to be the Saint Nicholas' house, but you can recylce your code if you like.
 Then write a function \texttt{draw\_tree{height}} that draws a tree of a given "height".
 The height serves a double purpose as the branching factor of the tree. Your tree is going to be a fractal,
@@ -160,7 +206,7 @@ To draw a tree with height h:
   Rotate right by angle 2A.
   Draw a tree of height h - 1.
   Rotate left by angle A.
-  Move back to the beginning of the line.  
+  Move back to the beginning of the line.
 \end{lstlisting}
 
 \noindent The resulting tree should look similar to Figure \ref{fig:tree:1}. Choose $A$ and $L$ as you like, be creative!\\
