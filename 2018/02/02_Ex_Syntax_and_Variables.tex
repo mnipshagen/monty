@@ -30,10 +30,14 @@ You just wrote the midterm and after correcting, your professor thinks it might 
 to have the exam results for each student digitally accessible. Which variable types would you use
 for variables to save the following things in? Explain your answers.
 \begin{enumerate}
-\item the student's name\sol{String, since we need to represent a bunch of characters}
-\item the student's matriculation number\sol{Int or String, both work. If the system is like the UOS one, int is just fine.}
-\item the student's exam grade\sol{Float, unviersity grades are (often) floats}
-\item if the student passed the exam or not\sol{Boolean, there are only two options.}
+\item the student's name\\
+\sol{string, since we need to represent a bunch of characters}
+\item the student's matriculation number\\
+\sol{int or string, both work. If the system is like the UOS one, int is just fine.}
+\item the student's exam grade\\
+\sol{float, university grades are (often) floats}
+\item if the student passed the exam or not\\
+\sol{boolean, there are only two options.}
 \end{enumerate}
 
 \subsection{}
@@ -41,14 +45,22 @@ Fast foward some time, you need to conduct the experiment. In the experiment you
 present subjects with a short stimulus and measure their score based on reaction.
 Which variable types would you use for the following variables in your experiment?
 \begin{enumerate}
-	\item subject id\sol{Int, subjects are usually anonymised and represented by a number}
-	\item subject age\sol{Int, for children we can go by month, for adults months are usually not relevant}
-	\item subject sex\sol{Boolean, sex is not gender and since we need to have a representative sample outliers are in most cases excluded}
-	\item stimulus onset in ms\sol{Float|Int, depending on the accuracy needed}
-	\item reaction time in ms\sol{Float|Int, depending on the accuracy needed}
-	\item subject test group (A, B, or C)\sol{String or Int, You can correlate a,b,c with 0,1,2, both work}
-	\item subject scores\sol{Int or Float, depending on calculation of score}
-	\item subject overall score\sol{Float, often an average or other statistical meausre, which are mostly non integers}
+	\item subject id\\
+\sol{int, subjects are usually anonymised and represented by a number}
+	\item subject age\\
+\sol{int, for children we can go by month, for adults months are usually not relevant}
+	\item subject sex\\
+\sol{boolean, sex is not gender and since we need to have a representative sample outliers are in most cases excluded}
+	\item stimulus onset in ms\\
+\sol{float or int, depending on the accuracy needed}
+	\item reaction time in ms\\
+\sol{float or int, depending on the accuracy needed}
+	\item subject test group (A, B, or C)\\
+\sol{string or int, You can correlate a,b,c with 0,1,2. Both work}
+	\item subject scores\\
+\sol{int or float, depending on calculation of score}
+	\item subject overall score\\
+\sol{float, often an average or other statistical measure, which are mostly non integers}
 \end{enumerate}
 
 \section{Some Math}
@@ -62,10 +74,10 @@ with the following formula $$ \dfrac{4*Score1 + Score2 + 0.5*Score3 + \sqrt{Scor
 \emph{Note:} Totally arbitrary forumla with probably no real world use.\\
 You can approximate \(\pi \) with 3.14 or you can use the following to get pi in python:
 \begin{python}
-import math.pi
+import math
 
 
-print(pi)
+print(math.pi)
 \end{python}
 
 Write a function that calculates and returns the overall performance of a subject when you pass it the five scores.
@@ -75,10 +87,9 @@ import math
 
 
 def overall_score(score1, score2, score3, score4, score5):
-	# **05 is the same as math.sqrt
+	# instead of `**0.5` `math.sqrt` could be used
 	# saving the result in a variable to avoid overly lenghty code
-	tmp = 4*score1 + score2 + 0.5*score3 + score4**0.5
-	return tmp/(2*math.pi)
+	return 4*score1 + score2 + 0.5*score3 + score4**0.5 / (2*math.pi)
 \end{python}
 }
 
@@ -117,6 +128,15 @@ def recipe_factor(height, diameter, orig_height=28, orig_diameter=8):
 	orig_volume = orig_height * (orig_diameter / 2)**2 * math.pi
 	new_volume = height * (diameter / 2)**2 * math.pi
 	return new_volume / orig_volume
+	# alternatively:
+	# return (orig_diameter / diameter)**2 * (orig_height / height)
+
+print("For your 24 by 6.5 cm mould multiply the ingredients by: ",
+	str(recipe_factor(24, 6.5)))
+print("For your 20 by 6 cm mould multiply the ingredients by: ",
+	str(recipe_factor(24, 6.5)))
+print("For your 18 by 6 cm mould multiply the ingredients by: ",
+	str(recipe_factor(24, 6.5)))
 \end{python}
 }
 
