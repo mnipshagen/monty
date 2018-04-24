@@ -11,8 +11,19 @@
 \let\thedate\@date
 \makeatother
 
+% Defining the Left Pointy Bracket and the Right Pointy Bracket, so they look nicer
+\newcommand\lpb{\small{<}}
+\newcommand\rpb{\small{>}}
+% sublists are annoying
+\newcommand\SubPoint[1]{
+  \begin{itemize}
+    \item #1
+  \end{itemize}
+  }
+  
 % do not include solutions
-\renewcommand\sol[1]{}
+% \renewcommand\sol[1]{} \renewcommand\SubPoint[1]{}
+
 
 \begin{document}
 
@@ -26,11 +37,15 @@ We can model vectors with tuples and lists. Python however is not equipped with 
 Write a script \texttt{vectors.py} which defines the following functions:
 \begin{itemize}
   \item \texttt{add(x, y)}: Adds $x$ and $y$ such that the result follows $z_i = x_i + y_i$.
+
   \item \texttt{sub(x, y)}: Subtracts $y$ from $x$ such that the result follows $z_i = x_i - y_i$.
-  \item \texttt{dot(x, y)}: Calculates the scalar (dot) product (or inner product) of $x$ and $y$. The dot product $<x,y>$ is defined as $<x,y> = \sum\limits_{i=1}^{N}x_iy_i$.
-  \item \texttt{angle(x, y)}: Calculates the angle between the between $x$ and $y$. The angle can be found by using an alternative definition of the dot product: $<x,y> = \|x\|\|y|\ \cos\theta$, which we can solve for $\theta$ and we get $\theta = \arccos\dfrac{<x,y>}{\|x|\|y\|}$.\\
-  \emph{Note:} $\|x\|$ where $x$ is a vector is called the vector norm and is calculated by $\sqrt{<x,x>}$.
-  \item \texttt{pdist(x, y, **kwargs)}: The distance between the two points $x$ and $y$. Your \textit{kwargs} should recognise the keywords \texttt{metric} and \texttt{p}. Your \texttt{metric} keyword should be able to take one of the values \texttt{'euclidean', 'minkowski', 'cityblock'}, and \texttt{p} can take any integer greater or equal to one. The distance is calculated depending on the metric and should default to \texttt{euclidean}. The distances are calculated as follows:
+
+  \item \texttt{dot(x, y)}: Calculates the scalar (dot) product (or inner product) of $x$ and $y$. The dot product $\lpb x,y\rpb$ is defined as $\lpb x,y\rpb = \sum\limits_{i=1}^{N}x_iy_i$.
+
+  \item \texttt{angle(x, y)}: Calculates the angle $\theta$ between the between $x$ and $y$. The angle can be found by using an alternative definition of the dot product: $\lpb x,y\rpb = \|x\|\|y\| \cos\theta$, which we can then solve for $\theta$ and we get $\theta = \arccos\dfrac{\lpb x,y\rpb}{\|x|\|y\|}$.\\
+  \emph{Note:} $\|x\|$ where $x$ is a vector is called the vector norm and is calculated by $\sqrt{<x,x>}$. You can find the arccos function in the \texttt{math} package, which we previously used for pi. The function is called \texttt{acos}.
+
+  \item \texttt{pdist(x, y, **kwargs)}: The distance between the two points $x$ and $y$. Your \textit{kwargs} should recognise the keywords \texttt{metric} and \texttt{p}. Your \texttt{metric} keyword should be able to take one of the values \texttt{'euclidean', 'minkowski', 'cityblock'}, and \texttt{p} can take any integer greater or equal than one. The distance is calculated depending on the metric and should default to \texttt{euclidean}. The distances are calculated as follows:
     \begin{itemize}
       \item \texttt{euclidean}: $d_{euclid} (x,y) = \sqrt[\uproot{2}2]{\sum\limits_{i=1}^N (x_i-y_i)^2}$.
       \item \texttt{minkowski}: $d_{minkowsky} (x,y) = \sqrt[\uproot{2}\texttt{p}]{\sum\limits_{i=1}^N (x_i-y_i)^\texttt{p}}$.
@@ -39,6 +54,7 @@ Write a script \texttt{vectors.py} which defines the following functions:
     \end{itemize}
     See figure \ref{fig:metrics} for a nicer visualisation.\\
     Don't be afraid of this. It looks scary at first, but it is not beyond the scope of what you already learned.
+
   \item \textbf{BONUS:} \texttt{cross(x, y)}: calculates the cross product of two vectors. This might be a bit tricky. The cross product will yield a matrix. \Large{TODO}
 \end{itemize}
 You can assume that all vectors have the same size.
@@ -51,9 +67,26 @@ You can assume that all vectors have the same size.
 \end{figure}
 
 \section{Which to What}
-Blabla Todo, something about when to use which collection.
+We will give you a few examples of datasets. Which collection type would you use to save this data in?\\
+Please explain your answers.
+\begin{itemize}
+\item options a user can click on in a program menu
+\SubPoint{\sol{List}}
+  \item a country's name, population and capital
+    \SubPoint{\sol{Tuple or Dict}}
+  \item food ingredients
+    \SubPoint{\sol{List}}
+  \item data about a music album
+    \SubPoint{\sol{Dict}}
+  \item people who visit Basic Programming in Python or Scientific Programming in Python
+    \SubPoint{\sol{Set}}
+  \item IDs of upcoming orders in an online shop
+    \SubPoint{\sol{List}}
+  \item nicknames and account information in a forum (e-mail address, password, real name [optional], birth date [optional], ...)
+    \SubPoint{\sol{Dict}}
+\end{itemize}
 
-\section{Working together <WIP title>}
-In the file \texttt{my\_collection.py} you will find two lists defined: \texttt{subjects} and \texttt{attributes}. 
-In the end you should have one dictionary which uses the subject id as a key and a \textit{list} of attributes for the value.
+\section{The Transform}
+In the file \texttt{my\_collection.py} you will find two lists defined: \texttt{subjects} and \texttt{attributes}. The first list contains subject ids, wheras the second one contains attributes corresponding to the subject ids. So the subject at index 0 of \texttt{subjects} has the attribute at index 0 of \texttt{attributes} and the subject at index 9 has the attribute at index 9. You get the idea.\\
+You may notice that each subject id appears multiple times. Your task now is to create a function to create one dictionary which uses the subject id as a key and a \textit{list} of attributes as the value.
 \end{document}
