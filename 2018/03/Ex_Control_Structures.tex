@@ -53,11 +53,11 @@ of truth values as given in the tables
   \hline
   \textbf{a} & \textbf{b} & \textbf{c} & \textbf{a or (b and c) and (not c or not a)} \\
   \hline
-  true & true & true & \sol{false} \\
+  true & true & true & \sol{true} \\
   \hline
   true & true & false & \sol{true} \\
   \hline
-  true & false & true & \sol{false} \\
+  true & false & true & \sol{true} \\
   \hline
   true & false & false & \sol{true} \\
   \hline
@@ -68,7 +68,7 @@ of truth values as given in the tables
   false & false & true & \sol{false} \\
   \hline
   false & false & false & \sol{false} \\
-  \hline
+  \hline  
 \end{tabular}
 
 \subsection{}
@@ -132,28 +132,36 @@ the verses in a different layout.
 \cprotect\sol{
 \begin{python}
 def bottles(n):
-  return ('1 bottle' if (n == 1) else str(n) + ' bottles') + ' of beer'
+    """Formats plural according to number of bottles."""
+    return ('1 bottle' if n == 1 else str(n) + ' bottles') + ' of beer'
 
 def n_bottles(n):
-  if not 5 <= n <= 99:
-    print('I want to sing funnier songs than "'
-      + bottles(n) + '".\n')
-    return
-  while n > 0:
-    print(bottles(n) + ' on the wall,\n ' + bottles(n) + '.')
-    n = n - 1
-    print('Take one down and pass it around,\n '
-      + bottles(n if n > 0 else 'no more') + ' on the wall.\n')
+    """
+    Go through the bottles of beer on the wall, and pass them around.
 
-n_bottles(2)
-n_bottles(1013)
+    Calls `bottles(n)` for formatting, and reduces n by 1 each iteration
+    """
+    if 5 <= n <= 99:
+        while(n > 0):
+            print(bottles(n) + ' on the wall,\n  ' + bottles(n) + '.')
+            n = n - 1
+            print('Take one down and pass it around,\n  ' +
+                # conditional expression to determine whethere there are bottles left
+                bottles(n if n > 0 else 'no more') + 
+                ' on the wall.\n')
+    else:
+        print('I want to sing funnier songs than "' + bottles(n) + '".\n')
+
+
+n_bottles(3)
+n_bottles(1011)
 n_bottles(5)
 \end{python}
 Output:
 \texttt{
 \small{\\
-I want to sing funnier songs than "2 bottles of beer".\\\\
-I want to sing funnier songs than "1013 bottles of beer".\\\\
+I want to sing funnier songs than "3 bottles of beer".\\\\
+I want to sing funnier songs than "1011 bottles of beer".\\\\
 5 bottles of beer on the wall,\\
 \indent 5 bottles of beer.\\
 Take one down and pass it around,\\
@@ -183,7 +191,7 @@ Take one down and pass it around,\\
 \FloatBarrier
 You hopefully remember the turtle from the first week -- you drew a Saint Nicholas' house with it.
 This time we will draw even more houses! And some trees to keep them company.\\
-Write a script \texttt{turtle.py}. Develop a function \texttt{draw\_house} that draws a house --
+Write a script \texttt{turtle\_world.py}. Develop a function \texttt{draw\_house} that draws a house --
 it doesn't need to be the Saint Nicholas' house, but you can recylce your code if you like.
 Then write a function \texttt{draw\_tree{height}} that draws a tree of a given "height".
 The height serves a double purpose as the branching factor of the tree. Your tree is going to be a fractal,
@@ -227,5 +235,10 @@ Now draw a simple landscape. Draw a house, a small tree, a big tree, a small tre
 	\label{fig:world:round}
 \end{figure}
 
+\cprotect\sol{
+\begin{python}
+
+\end{python}
+}
 
 \end{document}
