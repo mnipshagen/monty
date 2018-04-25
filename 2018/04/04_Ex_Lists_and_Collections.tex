@@ -55,14 +55,31 @@ Write a script \texttt{vectors.py} which defines the following functions:
     See figure \ref{fig:metrics} for a nicer visualisation.\\
     Don't be afraid of this. It looks scary at first, but it is not beyond the scope of what you already learned.
 
-  \item \textbf{BONUS:} \texttt{cross(x, y)}: calculates the cross product of two vectors. This might be a bit tricky. The cross product will yield a matrix. \Large{TODO}
+  \item \textbf{BONUS:} \texttt{outer(x, y)}: calculates the outer product of two vectors. The outer product of two vectors is the tensor product of the two. For two vectors with size $n$ the outer product will yield a matrix of size $(n, n)$.
+  The outer product is calculated as $C_{i_j} = x_iy_j$.
 \end{itemize}
-You can assume that all vectors have the same size.
+You can assume that all vectors have the same size. To verify your function works correctly you can test it with the following values:\\
+$a = (1, 2, 3), b = (4, 5, 6), c = [0, 1, 0, 0, 1], d = [1.5, 2.5, 3.5, 4.5, 5.5]$\\
+\begin{tabular}{|ll|}
+  \hline
+  Call & Result \\
+  \hline
+  \texttt{add(a,b)} & (5, 7, 9)\\
+  \texttt{add(b,a)} & (5, 7, 9)\\
+  \texttt{sub(a,b)} & (-3, -3, -3)\\
+  \texttt{dot(c,d)} & 8.0\\
+  \texttt{angle(a,b)} & approx. 0.23\\
+  \texttt{pdist(a,b)} & approx. 5.20\\
+  \texttt{pdst(a,b, metric='cityblock')} & 9\\
+  \texttt{pdist(a,b, metric='minkowski', p=3)} & approx. 3.95\\
+  \texttt{outer(a,b)} & (5, 7, 9)\\
+  \hline
+\end{tabular}
 \begin{figure}[h]
   \includegraphics[scale=0.5]{metriken}
+  \label{fig:metrics}
   \caption{Blue, red, and yellow are examples for the cityblock distance (it looks like following the streets of a grid city) and green is the euclidean distance.}
   \small{Taken from \url{https://en.wikipedia.org/wiki/Taxicab_geometry#/media/File:Manhattan_distance.svg}}
-  \label{fig:metrics}
   
 \end{figure}
 
