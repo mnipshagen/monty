@@ -24,10 +24,10 @@ def clean_up(subjects, attributes):
     subject id as the key and a list of their attributes as the corresponding 
     value.
     """
-    return {'implement':'me'}
+    return {sub : attributes[subjects.index(sub):subjects.index(sub)+subjects.count(sub)] for sub in set(subjects)}
 
 
 subject_dict = clean_up(all_subjects, all_attributes)
 
 # if this prints out true, your solution was correct!
-print("You solution was correct: " + check(subject_dict))
+print("You solution was correct: ", check(subject_dict))

@@ -118,7 +118,9 @@ def pdist(x, y, **kwargs):
   The outer product is calculated as $C_{i_j} = x_iy_j$.
   \cprotect\sol{\begin{python}
 def outer(x, y):
-		"""Returns a list of lists representinx a matrix calculated from the two vectors, each list represents one row"""
+    """Returns a list of lists representinx a matrix calculated from the two vectors, each list represents one row"""
+    # one liner:
+    # return [[xi * yi for yi in y] for xi in x]
     result = []
     for i in range(len(x)):
         row = []
@@ -190,6 +192,8 @@ def clean_up(subjects, attributes):
   subject id as the key and a list of their attributes as the corresponding
   value.
   """
+  # and as a one-liner:
+  # return {sub : attributes[subjects.index(sub):subjects.index(sub)+subjects.count(sub)] for sub in set(subjects)}
   # create the empty dict that we will keep adding the stuff into one by one
   subject_dict = dict()
   # idx is the counter going from 0 to 38
