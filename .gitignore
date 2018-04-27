@@ -9,6 +9,7 @@
 *.fls
 *.cpt
 *.log
+*.out
 output
 submissions
 .DS_Store
