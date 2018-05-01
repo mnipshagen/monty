@@ -1,0 +1,108 @@
+\input{../ex_template.tex}
+
+
+\title{BPP Exercise 5 - Strings and RegEx}
+\author{A. Hain, M. Nipshagen}
+\date{07.05.2018, 8:00}
+
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date
+\makeatother
+
+% Defining the Left Pointy Bracket and the Right Pointy Bracket, so they look nicer
+\newcommand\lpb{\small{<}}
+\newcommand\rpb{\small{>}}
+% sublists are annoying
+\newcommand\SubPoint[1]{
+  \begin{itemize}
+    \item #1
+  \end{itemize}
+  }
+
+% do not include solutions
+% \renewcommand\sol[1]{} \renewcommand\SubPoint[1]{}
+
+
+\begin{document}
+
+The deadline for this exercise sheet is \textbf{Monday, \thedate.}
+%
+%\section*{Introductory Words}
+%In case we have some information that doesn't directly concern the current exercises.
+%
+\section{Old MacDonald Had A Farm}
+Most of you will be familiar with the classic nursery rhyme of Old MacDonald and his farm full of animals. The first verse goes like this:\\\\
+\textit{Old MacDonald had a farm, E-I-E-I-O\\
+And on his farm he had a cow, E-I-E-I-O\\
+With a moo-moo here and a moo-moo there\\
+Here a moo\\
+There a moo\\
+Everywhere moo-moo\\
+Old MacDonald had a farm, E-I-E-I-O\\
+}
+
+\noindent In all subsequent verses, the next animal is introduced making its respective sound.\\
+In the file \texttt{old\_macdonald.py}, you will find a function that reads this first verse out of a file named \texttt{old\_macdonald.txt}. Open the code and execute the script to look at the output.
+
+\subsection{Old MacDonald's Cat}
+Old MacDonald recently also got a cat, which unfortunately could not keep still and kept on meow-ing through the verse, which you will have seen in the output.\\
+Each "meow" starts with either an uppercase or lowercase \textit{M}/\textit{m}, is followed by at least one \textit{e}, at least one \textit{o} and ends with exactly one \textit{w}.\\
+
+\noindent Examples:\\
+\textit{Meow\\
+meeooow\\
+Meeeeeeeeeeeow\\}
+
+\noindent The code includes another function  \texttt{delete\_meow}. Right now it does nothing and only returns the same verse as it was given.\\
+Change the function such that it returns a modified version of the given verse in which each meowing following the exact described pattern is deleted. Search the Internet to find out how to replace certain patterns in a string using regular expressions.
+
+\cprotect\sol{
+\begin{python}
+  def delete_meow(verse):
+      return re.sub("(m|M)(e)+(o)+w",'',verse)
+\end{python}
+}
+
+\subsection{Old MacDonald's Whole Farm}
+Now let's sind the whole song!\\
+First there is the cow going 'moo'.\\
+Then a duck going 'quack'.\\
+Then a horse going 'neigh'.\\
+Then a pig going 'oink'.\\
+And finally the cat, which can now go 'meow' after having waited its turn.\\
+So, for example, the second verse looks like this:\\\\
+\textit{
+Old MacDonald had a farm, E-I-E-I-O\\
+And on his farm he had a duck, E-I-E-I-O\\
+With a quack-quack here and a quack-quack there\\
+Here a quack\\
+There a quack\\
+Everywhere quack-quack\\
+Old MacDonald had a farm, E-I-E-I-O\\
+}
+
+\noindent Complete the given function  \texttt{sing\_song} to sing the song with all these animals (instead of only printing the first verse, as it does now)!\\\\
+This is done easiest using string formatting:\\
+\begin{description}
+  \item - First, find the words "cow" and "moo" in the cat-free verse and replace them with indexed markers
+  \item - Now use .format() to print the verse once for each animal with its respective sound and an empty line afterwards
+  \item - Tip: You can create a compact and flexible solution by making a loop that prints each verse and saving all the animals and sounds in a collection as introduced last week.
+\end{description}
+
+\cprotect\sol{
+\begin{python}
+  def sing_song(verse):
+      verse_rep = verse.replace('cow','{0}')
+      verse_rep = verse_rep.replace('moo','{1}')
+
+      animals = [('cow','moo'),('duck','quack'),('horse','neigh'),('pig','oink'), ('cat','meow')]
+
+      for animal in animals:
+          print(verse_rep.format(animal[0],animal[1]))
+          print()
+\end{python}
+}
+
+\end{document}
