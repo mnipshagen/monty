@@ -32,6 +32,39 @@ The deadline for this exercise sheet is \textbf{Monday, \thedate.}
 %\section*{Introductory Words}
 %In case we have some information that doesn't directly concern the current exercises.
 %
+
+\section{Warm-Up: Regular Expressions}
+For each of these RegEx, please indicate which of the given statements can be described by the RegEx.\\
+For each of the statements that \textit{cannot} be produced by the given RegEx, please explain, why.
+
+\subsection{}
+Can these statements be described by this RegEx: \textbf{ab?c+}
+\begin{itemize}
+\item[a)] abc \sol{Yes.}
+\item[b)] ab \sol{No. There needs to be at least one c.}
+\item[c)] abcc \sol{Yes.}
+\item[d)] accc \sol{Yes.}
+\end{itemize}
+
+\subsection{}
+Can these statements be described by this RegEx: \textbf{((xy)\textbar[0-9]*)*}
+\begin{itemize}
+\item[a)] 159yx1 \sol{No. It needs to be xy, not yx.}
+\item[b)] xyxyxyxy1 \sol{Yes.}
+\item[c)] 1xy27xy385 \sol{Yes.}
+\item[d)] 12345xy67ab89 \sol{No. This RegEx does not include the characters a or b.}
+\end{itemize}
+
+\subsection{}
+Can these statements be described by this RegEx: \textbf{([a-z]\textbar [A-Z])*0(hi\textbar hello)}
+\begin{itemize}
+\item[a)] aAb0hello \sol{Yes.}
+\item[b)] x0hellohi \sol{No. It can only be either hi or hello.}
+\item[c)] xyz0yhi \sol{No. There cannot be another single letter following the 0, only hi or hello.}
+\item[d)] 0hi \sol{Yes.}
+\end{itemize}
+
+
 \section{Old MacDonald Had A Farm}
 Most of you will be familiar with the classic nursery rhyme of Old MacDonald and his farm full of animals. The first verse goes like this:\\\\
 \textit{Old MacDonald had a farm, E-I-E-I-O\\
@@ -56,7 +89,7 @@ meeooow\\
 Meeeeeeeeeeeow\\}
 
 \noindent The code includes another function  \texttt{delete\_meow}. Right now it does nothing and only returns the same verse as it was given.\\
-Change the function such that it returns a modified version of the given verse in which each meowing following the exact described pattern is deleted. Search the Internet to find out how to replace certain patterns in a string using regular expressions.
+Modify the function such that it returns an altered version of the given verse in which each meowing following the exact described pattern is deleted. The function \texttt{sub} of the \texttt{re} module might be helpful.
 
 \cprotect\sol{
 \begin{python}
@@ -66,7 +99,7 @@ Change the function such that it returns a modified version of the given verse i
 }
 
 \subsection{Old MacDonald's Whole Farm}
-Now let's sind the whole song!\\
+Now let's sing the whole song!\\
 First there is the cow going 'moo'.\\
 Then a duck going 'quack'.\\
 Then a horse going 'neigh'.\\
@@ -83,7 +116,7 @@ Everywhere quack-quack\\
 Old MacDonald had a farm, E-I-E-I-O\\
 }
 
-\noindent Complete the given function  \texttt{sing\_song} to sing the song with all these animals (instead of only printing the first verse, as it does now)!\\\\
+\noindent Modify the given function  \texttt{sing\_song} to sing the song with all these animals (instead of only printing the first verse, as it does now)!\\\\
 This is done easiest using string formatting:\\
 \begin{description}
   \item - First, find the words "cow" and "moo" in the cat-free verse and replace them with indexed markers
@@ -94,8 +127,7 @@ This is done easiest using string formatting:\\
 \cprotect\sol{
 \begin{python}
   def sing_song(verse):
-      verse_rep = verse.replace('cow','{0}')
-      verse_rep = verse_rep.replace('moo','{1}')
+      verse_rep = verse.replace('cow','{0}').replace('moo','{1}')
 
       animals = [('cow','moo'),('duck','quack'),('horse','neigh'),('pig','oink'), ('cat','meow')]
 
