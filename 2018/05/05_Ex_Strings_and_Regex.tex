@@ -47,7 +47,7 @@ Can these statements be described by this RegEx: \textbf{ab?c+}
 \end{itemize}
 
 \subsection{}
-Can these statements be described by this RegEx: \textbf{((xy)\textbar[0-9]*)*}
+Can these statements be described by this RegEx: \textbf{\string^((xy)\textbar[0-9]*)*\$}
 \begin{itemize}
 \item[a)] 159yx1 \sol{No. It needs to be xy, not yx.}
 \item[b)] xyxyxyxy1 \sol{Yes.}
@@ -56,12 +56,12 @@ Can these statements be described by this RegEx: \textbf{((xy)\textbar[0-9]*)*}
 \end{itemize}
 
 \subsection{}
-Can these statements be described by this RegEx: \textbf{([a-z]\textbar [A-Z])*0(hi\textbar hello)}
+Can these statements be described by this RegEx: \textbf{(x*)(.[a-k])y\textbackslash2\textbackslash1}
 \begin{itemize}
-\item[a)] aAb0hello \sol{Yes.}
-\item[b)] x0hellohi \sol{No. It can only be either hi or hello.}
-\item[c)] xyz0yhi \sol{No. There cannot be another single letter following the 0, only hi or hello.}
-\item[d)] 0hi \sol{Yes.}
+\item[a)] xxxyayyaxxx \sol{Yes.}
+\item[b)] xx0my0mxx \sol{No. Group 2 consists of some arbitrary character and a letter from a to k. The character is already 0, so we cannot use an m as the second character in this group.}
+\item[c)] \#ay\#a \sol{Yes.}
+\item[d)] xxxefyefxx \sol{No. One x is missing at the end.}
 \end{itemize}
 
 
@@ -80,7 +80,7 @@ Old MacDonald had a farm, E-I-E-I-O\\
 In the file \texttt{old\_macdonald.py}, you will find a function that reads this first verse out of a file named \texttt{old\_macdonald.txt}. Open the code and execute the script to look at the output.
 
 \subsection{Old MacDonald's Cat}
-Old MacDonald recently also got a cat, which unfortunately could not keep quiet and kept on meow-ing through the verse, which you will have seen in the output.\\
+Old MacDonald recently also got a cat, which unfortunately could not keep quiet and kept on meowing through the verse, which you will have seen in the output.\\
 Each "meow" starts with either an uppercase or lowercase \textit{M}/\textit{m}, is followed by at least one \textit{e}, at least one \textit{o} and ends with exactly one \textit{w}.\\
 
 \noindent Examples:\\
