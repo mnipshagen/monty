@@ -1,9 +1,10 @@
 \input{../ex_template.tex}
-
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
 
 \title{BPP Exercise 5 - Strings and RegEx}
 \author{A. Hain, M. Nipshagen}
-\date{07.05.2018, 8:00}
+\date{07.05.2018, 18:00}
 
 \makeatletter
 \let\thetitle\@title
@@ -11,18 +12,8 @@
 \let\thedate\@date
 \makeatother
 
-% Defining the Left Pointy Bracket and the Right Pointy Bracket, so they look nicer
-\newcommand\lpb{\small{<}}
-\newcommand\rpb{\small{>}}
-% sublists are annoying
-\newcommand\SubPoint[1]{
-  \begin{itemize}
-    \item #1
-  \end{itemize}
-  }
-
 % do not include solutions
-% \renewcommand\sol[1]{} \renewcommand\SubPoint[1]{}
+\renewcommand\sol[1]{}
 
 
 \begin{document}
@@ -35,7 +26,7 @@ The deadline for this exercise sheet is \textbf{Monday, \thedate.}
 
 \section{Warm-Up: Regular Expressions}
 For each of these RegEx, please indicate which of the given statements can be described by the RegEx.\\
-For each of the statements that \textit{cannot} be produced by the given RegEx, please explain, why.
+For each of the statements that \textit{cannot} be described by the given RegEx, please explain, why.
 
 \subsection{}
 Can these statements be described by this RegEx: \textbf{ab?c+}
@@ -64,6 +55,20 @@ Can these statements be described by this RegEx: \textbf{(x*)(.[a-k])y\textbacks
 \item[d)] xxxefyefxx \sol{No. One x is missing at the end.}
 \end{itemize}
 
+\section{DFA}
+\FloatBarrier
+In this task we will look at a simple player controller for a 2D platformer. In this game a player can move to the left and right, jump while standing still and while moving and glide through the air after a jump. The goal the player needs to hit is in the sky and can only be reached by colliding while jumping or gliding. If the player collides while standing or moving, it is game over (the implicit error state). \\
+$U$ means the up key, $L$ the left and $R$ the right key. $0$ implies there is no key pressed, and $collide$ is whenever the player hits another entity.\\
+Write down the quintuple that defines the finite state automaton $A = (\Sigma, S, S_0, G, \delta)$.
+
+\begin{figure}[h!]
+\center
+\includegraphics[width=0.5\textwidth]{fsa}
+\caption{The FSA as a directed graph}
+\end{figure}
+
+
+\FloatBarrier
 
 \section{Old MacDonald Had A Farm}
 Most of you will be familiar with the classic nursery rhyme of Old MacDonald and his farm full of animals. The first verse goes like this:\\\\
@@ -119,8 +124,8 @@ Old MacDonald had a farm, E-I-E-I-O\\
 \noindent Modify the given function  \texttt{sing\_song} to sing the song with all these animals (instead of only printing the first verse, as it does now)!\\\\
 This is done easiest using string formatting:\\
 \begin{description}
-  \item - First, find the words "cow" and "moo" in the cat-free verse and replace them with indexed markers
-  \item - Now use .format() to print the verse once for each animal with its respective sound and an empty line afterwards
+  \item - First, find the words "cow" and "moo" in the cat-free verse and replace them with formatting markers
+  \item - Now use \texttt{.format()} to print the verse once for each animal with its respective sound and an empty line afterwards
   \item - Tip: You can create a compact and flexible solution by making a loop that prints each verse and saving all the animals and sounds in a collection as introduced last week.
 \end{description}
 
