@@ -12,6 +12,7 @@ def clean_up(subjects, attributes):
     """
     # and as a one-liner:
     # return {sub : attributes[subjects.index(sub):subjects.index(sub)+subjects.count(sub)] for sub in set(subjects)}
+    
     # create the empty dict that we will keep adding the stuff into one by one
     subject_dict = dict()
     # idx is the counter going from 0 to 38
