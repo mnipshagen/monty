@@ -1,0 +1,70 @@
+\input{../ex_template.tex}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
+
+\title{BPP Exercise 6 - Sorting and IO}
+\author{A. Hain, M. Nipshagen}
+\date{14.05.2018, 08:00}
+
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date
+\makeatother
+
+% do not include solutions
+% \renewcommand\sol[1]{}
+
+
+\begin{document}
+
+The deadline for this exercise sheet is \textbf{Monday, \thedate.}
+%
+%\section*{Introductory Words}
+%In case we have some information that doesn't directly concern the current exercises.
+%
+
+\section{Warm-Up}
+\subsection{Read \& Write}
+In the file \texttt{task\_1.txt}, is an unsorted list of numbers. Read in the list, sort it in \textit{descending} order and write it back to the file.
+In the end the file should only contain the sorted list.\\
+\cprotect\sol{
+\begin{python}
+import re
+
+
+with open("./task_1.txt", "r+") as f:
+    lst_in = f.read() # read the list as string
+    lst_in = re.sub("(\[|\])", "", lst_in) # get rid of the brackets
+    # split on the commas of the list,
+    # and cast to float since we are dealing with numbers
+    lst = [float(x) for x in lst_in.split(",")]
+    lst.sort(reverse=True) # and sort
+    f.write(str(lst)) # back in the file it goes
+\end{python}
+}
+
+\subsection{Key Sort}
+Given a list of the following structure:
+\begin{python}
+my_lst = [
+  {
+    "key1" : value1,
+    "key2" : value2,
+    "key3" : value3
+  },
+  {
+    "key1" : a_value,
+    "key2" : b_value,
+    "key3" : c_value
+  },
+  ...
+]
+\end{python}
+Sort the list in such a way, that the value of \texttt{"key2"} is used to compare and sort the dictionaries inside the list.\\
+\cprotect\sol{
+\begin{python}
+sorted(my_lst, key=lambda x: x["key2"])
+\end{python}
+}
+\end{document}
