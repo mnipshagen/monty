@@ -67,7 +67,7 @@ import math
 def angle(x, y):
     """Returns the angle between the two vectors in radien"""
     divisor = math.sqrt(dot(x, x)) * math.sqrt(dot(y, y))
-		return math.acos(dot(x, y) / divisor)
+    return math.acos(dot(x, y) / divisor)
 	\end{python}}
   \item \texttt{pdist(x, y, **kwargs)}: The distance between the two points $x$ and $y$. Your \textit{kwargs} should recognise the keywords \texttt{metric} and \texttt{p}. Your \texttt{metric} keyword should be able to take one of the values \texttt{'euclidean', 'minkowski', 'cityblock'}, and \texttt{p} can take any integer greater or equal than one. The distance is calculated depending on the metric and should default to \texttt{euclidean}. The distances are calculated as follows:
     \begin{itemize}
@@ -89,29 +89,23 @@ def pdist(x, y, **kwargs):
     The default metric used for distance calculation is the euclidean metric. Other options are 'cityblock' and 'minkowski'. If using minkowski distance, the parameter p >= 1 can be supplied.
     """
     # check whether metric is given, and use euclidean as default
-	metric = 'euclidean'
-    if 'metric' in kwargs:
-        metric = kwargs['metric']
-        # if minkwoski is used, check if p is supplied, else use 2 (euclidean)
-        if metric == 'minkowski':
-            if 'p' in kwargs:
-                p = kwargs['p']
-            else:
-                p = 2
-    
+    metric = kwargs['metric'] if 'metric' in kwargs else 'euclidean'
+     if metric == 'minkowski':
+        p = kwargs['p'] if 'p' in kwargs else 2
     if metric == 'euclidean':
-        squared = [abs(x[i] - y[i])**2 for i in range(len(x))]
+        squared = [abs(z)**2 for z in sub(x,y)]
         return math.sqrt(sum(squared))
     elif metric == 'cityblock':
-        diff = [abs(x[i] - y[i]) for i in range(len(x))]
+        diff = [abs(z) for z in sub(x, y)]
         return sum(diff)
     elif metric == 'minkowski':
         if p < 1:
-            return None
-        to_p = [abs(x[i] - y[i])**p for i in range(len(x))]
+             return None
+        to_p = [abs(z)**p for z in sub(x, y)]
         return sum(to_p) ** (1/p)
     else:
         return None
+
 \end{python}
 }
   \item \textbf{BONUS:} \texttt{outer(x, y)}: calculates the outer product of two vectors. The outer product of two vectors is the tensor product of the two. For two vectors with size $n$ the outer product will yield a matrix of size $(n, n)$.
