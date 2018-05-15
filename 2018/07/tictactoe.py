@@ -1,6 +1,15 @@
+def initialize_field(size=3):
+    """
+    Creates and returns an empty tic tac toe field with measurements size x size
+    """
+
+    # make nested list with list comprehension
+    return [[' ' for col in range(size)] for row in range(size)]
+
+
 def print_field(playing_field):
     """
-    Makes a printout of the field
+    Print out  the field
     """
 
     print() # empty line for better readability
@@ -20,20 +29,11 @@ def print_field(playing_field):
 
     print() # empty line for better readability
 
-def initialize_field(size=3):
-    """
-    Creates and returns an empty tic tac toe field with measurements size x size
-    """
-
-    # make nested list with list comprehension
-    return [[' ' for col in range(size)] for row in range(size)]
 
 def check_victory(playing_field,row,col):
     """
     Checks if the player who just chose a field won the game in this turn
     """
-
-
     current_player = playing_field[row][col]
 
     size = len(playing_field)
@@ -115,7 +115,6 @@ def game():
 
             # if the player won, congratulate and leave the loop
             print("Congrats Player " + current_player + "! You won!")
-            print_field(playing_field)
             break
 
         # if we get this far, the field was set but nobody has won
@@ -126,5 +125,9 @@ def game():
             current_player = 'X'
 
         turns -= 1
+
+    # whether someone won or not, print the field one last time
+    print_field(playing_field)
+
 
 game()
