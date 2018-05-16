@@ -13,7 +13,7 @@
 \makeatother
 
 % do not include solutions
-\renewcommand\sol[1]{}
+% \renewcommand\sol[1]{}
 
 
 \begin{document}
@@ -67,6 +67,22 @@ Write down the quintuple that defines the finite state automaton $A = (\Sigma, S
 \caption{The FSA as a directed graph}
 \end{figure}
 
+\cprotect\sol{\\
+  $A       = \{\Sigma, S, S_0, G, \delta\}$\\
+  $\Sigma  = \{U, L, R, U, Collide\}$\\
+  $S       = \{Stand, Move, Jump, Glide, Goal\}$\\
+  $S_0     = Stand$\\
+  $G       = \{Goal\}$\\
+  $\delta  = $ \begin{tabular}{l|ccccc}
+    & Stand & Move & Jump & Glide & Goal \\
+    \hline
+    0 & Stand & Stand & Stand & Stand & ?\\
+    L & Move & Move & Stand & Glide & ? \\
+    R & Move & Move & Stand & Glide & ? \\
+    U & Jump & Jump & Glide & Glide & ? \\
+    Collide & ? & ? & Goal & Goal & ?
+  \end{tabular}
+}
 
 \FloatBarrier
 
@@ -99,6 +115,7 @@ Modify the function such that it returns an altered version of the given verse i
 \cprotect\sol{
 \begin{python}
   def delete_meow(verse):
+      """Deletes all the versions of cat noise from the input string."""
       return re.sub("(m|M)(e)+(o)+w",'',verse)
 \end{python}
 }
@@ -132,9 +149,25 @@ This is done easiest using string formatting:\\
 \cprotect\sol{
 \begin{python}
   def sing_song(verse):
-      verse_rep = verse.replace('cow','{0}').replace('moo','{1}')
+      """
+      Sings the song.
+      
+      Replacing all default "moo"s and "cow"s with formatting markers to then
+      iterate over a list of animal-sound tuples and fill those markers in.
+      """
+      verse_rep = re.sub('cow','{0}', verse)
+      verse_rep = re.sub('moo','{1}', verse_rep)
+      # alternatively to re.sub, we can use
+      # `verse.replace('cow','{0}').replace('moo','{1}')`
+      # replace might be more suitable since we don't need regex
 
-      animals = [('cow','moo'),('duck','quack'),('horse','neigh'),('pig','oink'), ('cat','meow')]
+      animals = [
+          ('cow','moo'),
+          ('duck','quack'),
+          ('horse','neigh'),
+          ('pig','oink'),
+          ('cat','meow')
+        ]
 
       for animal in animals:
           print(verse_rep.format(animal[0],animal[1]),'\n')

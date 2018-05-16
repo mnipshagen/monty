@@ -1,4 +1,4 @@
-my_lst = [
+my_list = [
     {
         "key1" : "Potatosalad",
         "key2" : 42,
@@ -13,7 +13,7 @@ my_lst = [
         "key1" : "Pizza",
         "key2" : 35,
         "key3" : ["Dough", "Tomato", "Oregano", "Cheese"],
-        "keykey" : ["Bellpepper", "Sweetcorn", "Brokkoli"]
+        "keykey" : ["Bellpepper", "Sweetcorn", "Broccoli"]
     },
     {
         "keya" : "Food",
@@ -21,7 +21,7 @@ my_lst = [
         "keyb" : ["Generic_Ingredient", "Needed_Ingredient", "Special_Ingredient"]
     },
 ]
-my_lst_sorted = [
+my_list_sorted = [
     {
         'keya': 'Food',
         'key2': 1,
@@ -36,7 +36,7 @@ my_lst_sorted = [
         'key1': 'Pizza',
         'key2': 35,
         'key3': ['Dough', 'Tomato', 'Oregano', 'Cheese'],
-        'keykey': ['Bellpepper', 'Sweetcorn', 'Brokkoli']
+        'keykey': ['Bellpepper', 'Sweetcorn', 'Broccoli']
     },
     {
         'key1': 'Potatosalad',
