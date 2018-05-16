@@ -1,106 +1,141 @@
-number = None
-while (not number) or not (number > 0):
-    try_number = input("Please enter a number > 0: ")
-    try:
-        number = float(try_number)
-        print("Got it!")
-    except ValueError as err:
-        print("Error: ", err)
+# number = None
+# while (not number) or not (number > 0):
+#     try_number = input("Please enter a number > 0: ")
+#     try:
+#         number = float(try_number)
+#         print("Got it!")
+#     except ValueError as err:
+#         print("Error: ", err)
 
-try:
-    file_handle = open("my_file")
-except IOError as err:
-    print("Could not open file! Error: ", err)
-else:
-    content = file_handle.read()
-    result = analyse(content)
-finally:
-    file_handle.close()
-
-
-key_list = ["key", "my_key", "bike_key", "transponder"]
-key_to_lock = {
-    "my_key": "Finally I can go home again!",
-    "bike_key": "This unlocks my Bike!", 
-    "transponder": "Back to work it is."
-    }
-
-try:
-    idx = int(input(f"A number bewteen 0 and {len(key_list)-1} please: "))
-    key = key_list[idx]
-    print(key_to_lock[key])
-except (IndexError, KeyError, ValueError) as err:
-    print("Well this didn't work:", err)
-
-key_list = ["key", "my_key", "bike_key", "transponder"]
-key_to_lock = {
-    "my_key": "Finally I can go home again!",
-    "bike_key": "This unlocks my Bike!",
-    "transponder": "Back to work it is."
-}
-
-try:
-    idx = int(input(f"A number bewteen 0 and {len(key_list)-1} please: "))
-    key = key_list[idx]
-    print(key_to_lock[key])
-except IndexError as err:
-    print("No, no. This index doesn't work.")
-except KeyError as err:
-    print("Seems like that key has no lock. How strange.")
-except ValueError as err:
-    print("That's not a number...")
-
-key_list = ["key", "my_key", "bike_key", "transponder"]
-key_to_lock = {
-    "my_key": "Finally I can go home again!",
-    "bike_key": "This unlocks my Bike!",
-    "transponder": "Back to work it is."
-}
-
-try:
-    idx = int(input(f"A number bewteen 0 and {len(key_list)-1} please: "))
-    key = key_list[idx]
-    print(key_to_lock[key])
-except (IndexError, ValueError) as err:
-    print("That was not a valid index:", err)
-except KeyError:
-    print("Oh no! That key has no lock!")
+# try:
+#     file_handle = open("my_file")
+# except IOError as err:
+#     print("Could not open file! Error: ", err)
+# else:
+#     content = file_handle.read()
+#     result = analyse(content)
+# finally:
+#     file_handle.close()
 
 
-def sub(a, b):
-    return a + b
+# key_list = ["key", "my_key", "bike_key", "transponder"]
+# key_to_lock = {
+#     "my_key": "Finally I can go home again!",
+#     "bike_key": "This unlocks my Bike!", 
+#     "transponder": "Back to work it is."
+#     }
 
-assert sub(5, 4) == 1, '5 - 4 != 1'
-assert sub(7, 3) == 4, '7 - 3 != 4'
+# try:
+#     idx = int(input(f"A number bewteen 0 and {len(key_list)-1} please: "))
+#     key = key_list[idx]
+#     print(key_to_lock[key])
+# except (IndexError, KeyError, ValueError) as err:
+#     print("Well this didn't work:", err)
+
+# key_list = ["key", "my_key", "bike_key", "transponder"]
+# key_to_lock = {
+#     "my_key": "Finally I can go home again!",
+#     "bike_key": "This unlocks my Bike!",
+#     "transponder": "Back to work it is."
+# }
+
+# try:
+#     idx = int(input(f"A number bewteen 0 and {len(key_list)-1} please: "))
+#     key = key_list[idx]
+#     print(key_to_lock[key])
+# except IndexError as err:
+#     print("No, no. This index doesn't work.")
+# except KeyError as err:
+#     print("Seems like that key has no lock. How strange.")
+# except ValueError as err:
+#     print("That's not a number...")
+
+# key_list = ["key", "my_key", "bike_key", "transponder"]
+# key_to_lock = {
+#     "my_key": "Finally I can go home again!",
+#     "bike_key": "This unlocks my Bike!",
+#     "transponder": "Back to work it is."
+# }
+
+# try:
+#     idx = int(input(f"A number bewteen 0 and {len(key_list)-1} please: "))
+#     key = key_list[idx]
+#     print(key_to_lock[key])
+# except (IndexError, ValueError) as err:
+#     print("That was not a valid index:", err)
+# except KeyError:
+#     print("Oh no! That key has no lock!")
 
 
-def diff(a, b):
-    """Returns the absolute difference of a and b"""
-    sub = a - b
-    return sub if sub >= 0 else -sub
+# def sub(a, b):
+#     return a + b
 
-##########
-help(diff)
+# assert sub(5, 4) == 1, '5 - 4 != 1'
+# assert sub(7, 3) == 4, '7 - 3 != 4'
 
 
-import turtle
+# def diff(a, b):
+#     """Returns the absolute difference of a and b"""
+#     sub = a - b
+#     return sub if sub >= 0 else -sub
 
-help(turtle.up)
+# ##########
+# help(diff)
 
 
-def get_number(message):
-    number = None
-    while number is None:
-        try:
-            value = input(message)
-            number = float(value)
-        except ValueError:
-            print("That was no number.")
+# import turtle
+
+# help(turtle.up)
+
+
+# def get_number(message):
+#     number = None
+#     while number is None:
+#         try:
+#             value = input(message)
+#             number = float(value)
+#         except ValueError:
+#             print("That was no number.")
     
-    return number
+#     return number
 
-def get_idx():
-    number = get_number("A positive integer please: ")
-    if number < 0 or not (int(number) == number):
-        raise ValueError(f"{number} is no positive integer")
-    return number
+# def get_idx():
+#     number = get_number("A positive integer please: ")
+#     if number < 0 or not (int(number) == number):
+#         raise ValueError(f"{number} is no positive integer")
+#     return number
+
+# def add(a, b):
+#     """Returns the sum of a and b
+
+#     Args:
+#         a : the left operand
+#         b : the right operand
+
+#     Returns:
+#         The sum of of a and b
+#     """
+#     return a + b
+
+
+# def difficult_function(argument, other_arg=None):
+#     """Concise description.
+    
+#     Longer description (if concise is not enough)
+#     which might need multiple lines.
+    
+#     Or even some paragraphs. 
+    
+#     Args:
+#         argument: A description of this argument.
+#         other_arg: Another description.
+
+#     Returns:
+#         A short summary of what is returned, especially its format.
+    
+#     Raises:
+#         ValueError: When does this occur?
+#     """
+#     pass
+
+

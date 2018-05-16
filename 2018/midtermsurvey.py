@@ -14,4 +14,3 @@ walk_in_used[walk_in_used=='No'] = 0
 walk_in_used[walk_in_used=='Yes'] = 1
 
 # %% inspect
-plt.scatter(walk_in_used, hw_difficulty)
