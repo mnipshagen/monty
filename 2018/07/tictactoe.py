@@ -1,16 +1,12 @@
 def init_grid(size=3):
-    """
-    Creates and returns an empty Tic-tac-toe grid with measurements size x size
-    """
+    """Returns an empty Tic-tac-toe grid with measurements size x size"""
 
     # make nested list with list comprehension
     return [[' ' for col in range(sze)] for row in range(size)]
 
 
 def print_grid(grid):
-    """
-    Prints the grid
-    """
+    """Prints the grid"""
 
     # empty line for better readability
     print()
@@ -32,9 +28,17 @@ def print_grid(grid):
 
 
 def get_input(grid, current_player):
-    """
-    Makes player specify row and column of a field until input is valid
-    Returns the indices of the chosen field
+    """ Get the field the player wants to play
+
+    Get a row and column seperated by a comma from the player. The player
+    is asked until he chooses a valid, free field of the grid.
+
+    Args:
+        grid: The tic tac toe game field
+        current_player: the symbol of the player
+
+    Returns:
+        The row and column as a tuple
     """
 
     input_check = False
@@ -57,22 +61,35 @@ def get_input(grid, current_player):
                 # input is ok if typecast input is in range of grid and the chosen field is empty
                 if 0 <= row < size and 0 <= col < size and grid[row][col] == ' ':
                     input_check = True
+                else:
+                    raise ValueError()
 
             # catch error if input is not a number
             except ValueError:
-                # nothing else to do here
-                pass
+                print(("Please make sure that you are choosing "
+                    "an empty cell and that your indices are "
+                    "inside the grid's boundaries (0-indexed)."))
 
     # return the chosen field
     return row,col
 
 
 def check_win(grid,row,col):
-    """
-    Is handed coordinates row,col of a field in the grid
-    Calls functions that check if the player who just chose the field won the
-    row, the column or a diagonal corresponding to it
-    Returns True if the player just won the game accordingly
+    """Returns True if current player has won.
+
+    Given the cell that was just populated, it checks the row, column and
+    diagonal of that field for a win condition.
+
+    The win condition is to have the whole row/column/diagonal filled with
+    one player's symbol.
+
+    Args:
+        grid: the tic tac toe game field
+        row: the row of the cell to check
+        col: the column of the cell to check
+
+    Returns:
+        True if a win condition is met
     """
 
     return check_row(grid,row,col) or check_col(grid,row,col) or check_diag(grid,row,col)
@@ -89,10 +106,18 @@ def check_row(grid,row,col):
     return grid[row].count(current_player) == len(grid)
 
 def check_col(grid,col,row):
-    """
-    Is handed coordinates row,col of a field in the grid
-    Returns True if all fields in the same column are occupied by the same player
-    as this field
+    """Returns true if the column of the current cell is in win condition.
+
+    Counts the occurences of the cell's player's marker and if it is equal
+    to the size of the grid, the player has won.
+
+    Args:
+        grid: the tic tac toe game field
+        row: the row of the cell to check
+        col: the column of the cell to check
+
+    Returns:
+        True if a win condition is met
     """
 
     current_player = grid[row][col]
@@ -107,10 +132,21 @@ def check_col(grid,col,row):
     return count == size
 
 def check_diag(grid,row,col):
-    """
-    Is handed coordinates row,col of a field in the grid
-    Returns True if field is on a diagonal and if all fields on the corresponding
-    diagonal(s) are occupied by the same player as this field
+    """Returns true if the diagonal of the current cell is in win condition.
+
+    Counts the occurences of the cell's player's marker and if it is equal
+    to the size of the grid, the player has won.
+
+    Checks in which diagonal the cell is, and then counts occurences in
+    this diagonal.
+
+    Args:
+        grid: the tic tac toe game field
+        row: the row of the cell to check
+        col: the column of the cell to check
+
+    Returns:
+        True if a win condition is met
     """
     
     size = len(grid)
@@ -138,8 +174,11 @@ def check_diag(grid,row,col):
     return False
 
 def game():
-    """
-    Main Tic-tac-toe game
+    """Runs the main game loop
+
+    Initialised the empty play field, and then allows up to grid size ^ 2
+    turns until the game is over. When a win condition is met, the loop
+    breaks and the game is over.
     """
 
     # there can only be as many turns as fields in the grid
@@ -173,6 +212,8 @@ def game():
         else:
             current_player = 'X'
 
+    else:
+        print("Well played you two. It's a draw.")
     # whether someone won or or there are no fields left, print the grid one last time
     print_grid(grid)
 
