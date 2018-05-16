@@ -4,7 +4,7 @@ def init_grid(size=3):
     """
 
     # make nested list with list comprehension
-    return [[' ' for col in range(sze)] for row in range(size)]
+    return [[' ' for col in range(size)] for row in range(size)]
 
 
 def print_grid(grid):
@@ -25,7 +25,7 @@ def print_grid(grid):
 
         # if this is not the last row, print a line separator as well
         if i < len(grid) - 1:
-            print('-' * len(row_string)
+            print('-' * len(row_string))
 
     # empty line for better readability
     print()
@@ -41,7 +41,7 @@ def get_input(grid, current_player):
     size = len(grid)
 
     # get input. remain in this loop if just anything is wrong with it
-    while input_check = False:
+    while input_check == False:
         chosen_field = input("Player " + current_player + ", choose a field (row, column)! ")
 
         # split up into list
@@ -88,7 +88,7 @@ def check_row(grid,row,col):
     current_player = grid[row][col]
     return grid[row].count(current_player) == len(grid)
 
-def check_col(grid,col,row):
+def check_col(grid,row,col):
     """
     Is handed coordinates row,col of a field in the grid
     Returns True if all fields in the same column are occupied by the same player
@@ -112,7 +112,7 @@ def check_diag(grid,row,col):
     Returns True if field is on a diagonal and if all fields on the corresponding
     diagonal(s) are occupied by the same player as this field
     """
-    
+
     size = len(grid)
     current_player = grid[row][col]
 
@@ -142,6 +142,9 @@ def game():
     Main Tic-tac-toe game
     """
 
+    # get grid
+    grid = init_grid()
+
     # there can only be as many turns as fields in the grid
     turns = len(grid)**2
 
@@ -161,9 +164,9 @@ def game():
         grid[row][col] = current_player
 
         # call function that checks and returns if the player won now
-        if check_win(grid,row,col,current_player) == True:
+        if check_win(grid,row,col) == True:
             # if the player won, congratulate and leave the loop
-            print("Congrats Player " current_player + "! You won!")
+            print("Congrats Player " + current_player + "! You won!")
             break
 
         # if we get this far, the field was set but nobody has won yet
@@ -172,6 +175,9 @@ def game():
             current_player = 'O'
         else:
             current_player = 'X'
+
+        # one field was occupied, so decrease counter
+        turns -= 1
 
     # whether someone won or or there are no fields left, print the grid one last time
     print_grid(grid)
