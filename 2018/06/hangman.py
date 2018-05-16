@@ -256,7 +256,7 @@ def init():
     turn = 0
     words = read_words()
     the_word = pick_word(words)
-    guess_word = init_guess_word(len(word))
+    guess_word = init_guess_word(len(the_word))
     misses = MAX_MISSES
     guesses = []
 
@@ -306,5 +306,3 @@ while cont == "y":
     game() # play a game!
     # on a y or Y we continue
     cont = input("Do you want to play again? (y/n): ").lower()
-
-    
