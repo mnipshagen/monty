@@ -5,6 +5,7 @@
 *.zip
 *.synctex.gz
 *.aux
+*.toc
 *.fdb_latexmk
 *.fls
 *.cpt
