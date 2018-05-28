@@ -20,12 +20,13 @@
 \usepackage{listings} % for code display
 % setting code style
 \newcommand\pythonstyle{\lstset{
+		linewidth=1.05\textwidth,
         language=Python,
         backgroundcolor=\color{backcolour},
 		basicstyle=\footnotesize,
 		otherkeywords={self},
 		keywordstyle=\footnotesize\color{deepblue},
-		emph={__init__},
+		emph={__init__, __about__},
 		emphstyle=\footnotesize\color{deepred},
 		stringstyle=\color{deepgreen},
 		frame=single,

@@ -24,11 +24,13 @@ import string
 
 
 MAX_MISSES = 5
-RULES = """
-Hello! Let's play a game of hangman!
-I already picked a word, and you now have to guess letters.
-But be warned, if you guess wrong more than {} times, you lose!
-""".format(MAX_MISSES)
+RULES = (
+    "Hello! Let's play a game of hangman!\n"
+    "I already picked a word, and you now have to guess letters.\n"
+    "But be warned, if you guess wrong more than {} times, you lose!\n"
+    ).format(MAX_MISSES)
+MSG_WIN = "Congratulations!"
+MSG_LOSE = "Oh no! Good luck next time! The word was {}"
 
 
 def get_art(lvl=0, width=16):
@@ -48,27 +50,22 @@ def get_art(lvl=0, width=16):
     """
     art_top = [" _______",
                "|      |"]
-    if lvl < 5:
-        art_mid = ["|", "|", "|", "|"]
-        if lvl > 0:
-            art_mid[0] = "|     (_) "
-        if lvl > 1:
-            art_mid[1] = "|     /|  "
-        if lvl > 2:
-            art_mid[1] = "|     /|\ "
-        if lvl > 3:
-            art_mid[2] = "|      |  "
-            art_mid[3] = "|     /   "
+            
+    art_mid = ["|", "|", "|", "|"]
+    art_bot = ["|___________",
+                "/|       | |"]
 
-        art_bot = ["|___________",
-                   "/|       | |"]
-    else:
-        art_mid = [
-            "|     (_)   ",
-            "|     /|\   ",
-            "|      |    ",
-            "|     / \   "
-        ]
+    if lvl > 0:
+        art_mid[0] = "|     (_) "
+    if lvl > 1:
+        art_mid[1] = "|     /|  "
+    if lvl > 2:
+        art_mid[1] = "|     /|\ "
+    if lvl > 3:
+        art_mid[2] = "|      |  "
+        art_mid[3] = "|     /   "
+    if lvl > 4:
+        art_mid[3] = "|     / \   "
         art_bot = ["|____    ___",
                    "/|   \   | |"]
 
@@ -110,7 +107,7 @@ def pick_word(words):
     return random.choice(words)
 
 
-def get_guess():
+def get_guess(guesses):
     """
     Asks the user for an input letter until it is a valid letter.
 
@@ -122,7 +119,9 @@ def get_guess():
         The input guess from the user
     """
     guess = ""
-    while (len(guess) != 1) or (not guess in string.ascii_lowercase):
+    while ((len(guess) != 1) or 
+            (not guess in string.ascii_lowercase) or 
+            (guess in guesses)):
         guess = input("Which letter is your next guess? ").lower()
 
     return guess
@@ -210,40 +209,8 @@ def check_win(guess_word):
     return not "_" in guess_word
 
 
-def game_end(won, word):
-    """
-    Prints a message depending on whether the player has won.
-    
-    Args:
-        won: Boolean whether the player has won
-        word: The target word
-    """
-    win_msg = "Congratulations!"
-    lose_msg = "Oh no! Good luck next time! The word was {}"
-
-    msg = win_msg if won else lose_msg.format(word)
-    print(msg)
-
-
-def init_guess_word(length):
-    """
-    Returns the initial guess word state.
-
-    The guess word is initialised with underscores, one for each letter
-    of the target word.
-
-    Args:
-        length: the length of the target word
-    
-    Returns:
-        The initialised guess word, a list of `length` underscores
-    """
-    return ["_"] * length
-
-
 def init():
-    """
-    Initialises our game world.
+    """Initialises our game world.
 
     Sets the default values for the game state variables, and then return
     them as a tuple. This includes to read the words from the file, picking
@@ -256,7 +223,7 @@ def init():
     turn = 0
     words = read_words()
     the_word = pick_word(words)
-    guess_word = init_guess_word(len(the_word))
+    guess_word = ['_'] * len(the_word) # works because strings are immutable
     misses = MAX_MISSES
     guesses = []
 
@@ -281,15 +248,13 @@ def game():
     the end of game message.
     """
     turn, word, guess_word, misses, guesses = init()
-    won = False
 
-    while not won and misses > 0:
+    while not check_win(guess_word) and misses > 0:
         print_game_state(turn, misses, guess_word, guesses)
-        guess = get_guess()
+        guess = get_guess(guesses)
 
         if guess in word:
             guess_word = update_guess_word(word, guess_word, guess)
-            won = check_win(guess_word)
         else:
             guesses += guess
             misses -= 1
@@ -297,7 +262,9 @@ def game():
         turn += 1
 
     print_game_state(turn, misses, guess_word, guesses)
-    game_end(won, word)
+    
+    print( MSG_WIN if check_win(guess_word) else MSG_LOSE.format(word) )
+    
 
 
 # we can continue the game until the player quits
