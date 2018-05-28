@@ -1,0 +1,100 @@
+\input{../ex_template.tex}
+\usepackage{setspace}
+
+\title{BPP Exercise 8 - 4P}
+\author{A. Hain, M. Nipshagen}
+\date{29.05.2018, 14:00}
+
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date
+\makeatother
+
+
+\newcommand\itemsub[1]{
+	\begin{itemize}
+		\item #1
+	\end{itemize}
+}
+
+% do not include solutions
+% \renewcommand\sol[1]{}
+
+
+\begin{document}
+
+The deadline for this exercise sheet is \textbf{Tuesday, \thedate.}
+
+\section*{Introductory Words}
+This week we decided to put the hints and structural ideas as well as the pseudo code into another file.
+This way you can challenge yourself and only peek bit for bit when you are stuck. The hints are structured
+with a table of contents and only one hint per page. This way you can very selectively look at what you
+are struggling with.\\
+Feel free to let us know your thoughts on this!
+
+\section{A Way Out}
+In this week's homework you will build a program that can find the way through a maze
+from a given start point to a given goal point using backtracking.\\
+In the .zip archive, you will find a folder called \textit{mazes}. Inside are several
+text files each containing one maze. A maze is a grid structure, similar to the
+tic-tac-toe game, each cell containing one character, which represents a different
+part of the maze. We chose:
+\begin{itemize}
+    \item \texttt{\#}: to represent the hedge / wall of a maze, so a field that is unpassable.
+    \item \texttt{*}: to mark the start field, so the cell from which we start to find a path.
+    \item \texttt{G}: to mark the goal cell, which we want to reach.
+    \item \texttt{ }: A space that represents the path that we can walk on.
+\end{itemize}
+An example might be:
+\begin{spacing}{0}\begin{verbatim}
+##########
+#        #
+# # # #  #
+# # ### ##
+# ###*#  #
+# #   ## #
+# # #### #
+G #      #
+##########
+\end{verbatim}\end{spacing}\vspace{6pt}\noindent
+Your program now should be able to find a way from \texttt{*} to \texttt{G} and show
+the taken path. Diagonal movement is not valid, and you can only visit the 4-neighbourhood
+(the up, left, down, and right neigbhour cells).
+Use the trial-and-error strategy of backtracking to force your way 
+through the maze. Your program should be able to deal with mazes that have no valid
+path or no start or goal pos. Split your code into modules such that your code can 
+be combined under meaningful modulenames and document all of it appropriately.
+Don't forget the module docstring! (see the hangman solution for an example)\\
+\emph{Small-ish Bonus Task:}\\
+To dynamically check the folder for all available files, have a look at the 
+\texttt{os} module \url{https://docs.python.org/3/library/os.html}, and esepcially
+at the \texttt{listdir(path)} function. Together with the \texttt{open} function,
+this should allow to read all mazes, present them as a choice to the user, and 
+then open the chosen maze. \emph{End of small-ish Bonus Task.}\\
+\emph{Small-ish Bonus Task 2:}\\
+Let the user input a new maze in the terminal, and save it in the folder with
+the other mazes. \emph{End of small-ish Bonus Task 2.}
+
+\subsection{Bonus: Bundle it up!}
+\emph{Note:} This will involve a bit of reading and maybe some web searches
+from yourself, so it is hard to say how much time this task will need. It
+also depends of course on how far you want to take this.\\[10pt]
+When you have programmed your amazing maze solver (you choose whether the maze or the
+solver is amazing), you have programmed several (maybe around three?) modules. These modules
+together build a unit to solve a maze. So let's bundle them up and build a package!\\
+The modules should reside alone inside their own folder, the folder name is your
+package name. A package needs a \pythoninline{__init__.py} and a \pythoninline{__about__.py}
+(technically it only needs the init file).\\
+The \pythoninline{__init__.py} file tells Python that this directory is a package. 
+The file can even be empty, just its existence is enough.
+However, the \pythoninline{__init__.py} file can be used to initialise certain code or define
+certain package relevant variables. You can find an introduction to defining packages
+here \url{https://docs.python.org/3/tutorial/modules.html#packages} and as well how to
+import modules inside the same package.\\
+For the \pythoninline{__about__.py} file you might want to look at this blog
+\url{http://toxi.nu/blog/how-to-store-your-python-package-metadata/}, which gives a short
+rundown on why you would want to use the about file and what to put in it.\\[10pt]
+If you want to know more on packages and how to prepare a package for release to be used
+by third parties, you can have a look at \url{https://packaging.python.org/tutorials/packaging-projects/}.
+\end{document}
