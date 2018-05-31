@@ -65,17 +65,6 @@ def present_mazes(maze_list, print_mazes=False):
         if print_mazes:
             show_maze(fileIO.get_maze(maze))
         print()
-        # max_width = 80
-        # width = 0
-        # to_print = []
-        # i = 0
-        # while i < len(maze_list):
-        #     maze_name = maze_list[i]
-        #     grid = fileIO.get_maze(maze_name)
-        #     height = len(grid) + 1
-        #     if len(to_print) < height:
-        #         for j in range(height - len(to_print)):
-        #             to_print.append([])
 
 def get_user_choice(msg, length):
     idx = -1
