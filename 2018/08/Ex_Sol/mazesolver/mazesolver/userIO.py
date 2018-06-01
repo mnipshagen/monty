@@ -2,24 +2,14 @@
 This module handles the user interactions in the maze program.
 
 The module expects the modules 'fileIO' and 'solver' (from own package)
-
-Functions:
-    show_welcome(): Show welcome instructions to user.
-    menu(): Show menu options to user, lets them choose one.
-    present_mazes(): Presents maze IDs, maze names (and, if wished for,
-                     complete mazes) to the user
-    get_user_choice(): Lets user choose valid ID of a maze.
-    choose_maze(): Shows all maze choices to user, lets user choose one.
-    show_maze(): Prints a maze line by line.
-    user_save(): Makes user choose if they want a (solved) maze saved.
-    create_maze(): Lets the user enter a new maze row by row.
+It implements several functions to display information and get information
+from the terminal. Most output is normed to a width of 80 characters.
 """
-
-
 import os
 
 from . import fileIO
-from .solver import GOAL, START, WALL
+from .solver import GOAL, START, WALL # the . in front implies a local import
+
 
 # constants matching the options of solving a maze, creating a maze or
 # quitting the program to a number
@@ -30,10 +20,8 @@ QUIT = 2
 
 def show_welcome():
     """Displays an instructing welcome message to the user."""
-
-
     # define functions that formats a line of the help text to be put between
-    # two pipes and have a length of 78 characters
+    # two pipes and have a length of 78 characters, for a total width of 80
     help_line = lambda line: f"*{line:^78}*"
 
     # text to present to the user
@@ -63,7 +51,7 @@ def show_welcome():
 
 def menu():
     """
-    Displays the main menu and instuctions to the user, then lets them choose
+    Displays the main menu and instructions to the user, then lets them choose
     an option.
 
     Returns:
@@ -112,10 +100,7 @@ def present_mazes(maze_list, print_mazes=False):
         maze_list: list of all available mazes
         print_maze: boolean indicating if the mazes should be shown as well.
                     defaults to False.
-
     """
-
-
     print("The following mazes are available:")
 
     # go through all mazes in the list and assign an index to each of them
@@ -134,14 +119,14 @@ def present_mazes(maze_list, print_mazes=False):
 
 def get_user_choice(msg, length):
     """
-    Makes user choose an existing index of a maze.
+    Makes user choose an existing index in a given range from 0 to length - 1.
 
     Args:
         msg: Message to be shown to user when asked for input of an index
-        length: length of maze list, so valid indices are between 0 and length-1
+        length: length of indices, so valid indices are between 0 and length - 1
 
     Returns:
-        idx: index of chosen maze
+        idx: chosen index
     """
 
     idx = -1
@@ -173,9 +158,8 @@ def choose_maze():
     Return:
         maze_list[idx]: maze with ID 'idx' chosen by the user
     """
-
     # let user choose whether to display only the maze names or the complete
-    # mazes and save this choise in 'full' as True/False
+    # mazes and save this choice in 'full' as True/False
     choice = input(
         "Would you like to see the mazes in full "
         "or only the names of the mazes? (f[ull]/n[ames])\n"
@@ -206,7 +190,6 @@ def show_maze(grid):
     Args:
         grid: the maze
     """
-
     # go through each line of the maze
     for line in grid:
         # add a space between characters for readability and print
@@ -226,7 +209,6 @@ def user_save(solved, grid):
         False if user decides to not save the maze by not typing 'y' or if the
         maze was not solved
     """
-
     # no way was found through the maze so there is no solved maze to save
     if not solved:
         print("Oh no, that's embarrassing. We found no way through the maze.")
@@ -258,7 +240,7 @@ def create_maze():
         "Enter your maze row by row. Make sure that all rows "
         "have the same length. Each maze needs to have a start "
         f"position ({START}) and a goal position ({GOAL}). Use "
-        f"{WALL} for the walls of the maze. They are unpassable "
+        f"{WALL} for the walls of the maze. They are impassable "
         "for the solver. It is suggested to surround the maze "
         "with walls for better readability.\n"
         "Just press enter (on an empty line) to end input.\n"
@@ -282,7 +264,7 @@ def create_maze():
         if row == '':
             break
 
-        # all rows of the maze need to have the samze length
+        # all rows of the maze need to have the same length
         if len(row) != row_length:
 
             # print message and current maze to remind user to put in rows of

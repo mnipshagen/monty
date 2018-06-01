@@ -4,6 +4,9 @@ This module contains the main maze program.
 The module expects the modules 'fileIO', 'userIO' and 'solver' from the package
 'mazesolver' to be available.
 
+It uses the functions offered in those modules to form a 
+fully functioning maze solver application.
+
 Functions:
     main(): contains game loop
             called upon direct execution of the module
@@ -19,7 +22,8 @@ def main():
     to choose between solving a maze, creating a maze and exiting the program.
     """
 
-    # get the absolute path of the maze folder in the system
+    # Set the mazefolder to the absolute path of a folder called 'mazes'
+    # that is at the same location as the maze.py script
     fileIO.MAZEFOLDER = path.join(path.dirname(path.abspath(__file__)), 'mazes')
 
     # display a welcome message to the user explaining the program
@@ -61,6 +65,7 @@ def main():
 
         # let user to decide whether to continue solving/creating a maze or not
         play = input("Do you want to continue? (y/n)\n").lower()
+
 
 # if this is the module currently executed (not imported)
 if __name__ == '__main__':
