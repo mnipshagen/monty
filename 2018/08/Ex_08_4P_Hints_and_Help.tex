@@ -1,0 +1,166 @@
+\input{../ex_template.tex}
+
+\title{BPP Exercise 8 - 4P: Hints \& Help}
+\author{A. Hain, M. Nipshagen}
+\date{29.05.2018, 14:00}
+
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date
+\makeatother
+
+\newcommand\itemsub[1]{
+	\begin{itemize}
+		\item #1
+	\end{itemize}
+}
+
+\setcounter{secnumdepth}{0}
+
+\begin{document}
+The deadline for this exercise sheet is \textbf{Tuesday, \thedate.}
+\tableofcontents
+\vspace{12pt}\noindent
+\textbf{DISCLAIMER:} These are all just suggestions and not necessarily a complete
+or the best approach to a solution. It just offers hints, general approaches
+and ideas.
+\pagebreak
+
+\section{The Pseudocode}
+The following pseudocode would be a possible (and simplified) way of doing it:
+\begin{verbatim}
+Let User Choose A Maze
+Load Maze From File
+Convert Maze Into List-like Structure
+Print Maze Without Path
+Find Start Point
+Find Goal Point
+Start Recursive Search:
+    If Position Is Goal Positon:
+        Done
+    If Position Is Wall:
+        Go Back
+    If Position Is Already Visited:
+        Go Back
+    For All Directions:
+        Search(NewPos)
+
+If Way Found:
+    Print Maze With Path
+Else:
+    Print Sad Message Since One Is Forever Trapped
+If Save:
+    Save Solved Maze To New File
+\end{verbatim}
+\pagebreak
+
+\section{General Hints That Can Be More Or Less Helpful}
+\begin{itemize}
+    \item You need to check the 4 neighbouring fields of each cell
+        \itemsub{be careful with the bounds of the grid}
+    \item Each cell you visit needs to be checked before continuing to the neighbours
+    \item Make sure to mark visited cells with a marker so you don't visit a cell twice
+    \item The necessary checks are whether it is a wall, path, start, or goal cell
+        \itemsub{make sure to return according results}
+    \item Just like last week, part your code into smaller specific functions
+        \itemsub{Like one function for reading mazes from files, one for converting them
+        into a grid, and one for solving the maze then, and so on...}
+\end{itemize}
+\pagebreak
+
+\section{Module Separation}
+We suggest the modules:
+\begin{itemize}
+	\item \texttt{solver.py}:
+	      This is where the actual recursion and solving happens.
+	      Most importantly it implements the \texttt{solve} function, which
+	      starts the search for a way
+	\item \texttt{fileIO.py}:
+	      This module is responsible for reading mazes from files and rebuild them
+	      into a usable Python structure. It could also offer the possibility to write
+          back to files, to make it easy to save solutions to mazes or save mazes
+          inputted by the user
+	\item \texttt{userIO.py}:
+	      This module offers functions to display the maze in a nice way on the
+	      terminal and interact with the user, like getting input, varifying the input, etc.
+	\item \texttt{maze.py}:
+	      This is what brings it all together. It is the "main" module of the whole pack.
+	      It imports the functionality of the other 3 modules and runs the main program to
+	      choose a maze, load the maze, solve the maze and print the solution
+\end{itemize}
+\pagebreak
+
+\section{Suggested Functions In Module 1}
+Module \texttt{maze.py} could contain:
+\begin{itemize}
+	\item \pythoninline{main():} the function that starts and runs it all. That's it.
+\end{itemize}
+\pagebreak
+
+\section{Suggested Functions In Module 2}
+Module \texttt{solver.py} could contain:
+\begin{itemize}
+	\item \pythoninline{WALL} a constant that tells the solver which character
+	      represents a wall (you may default it to \pythoninline{#})
+	\item \pythoninline{START} a constant that tells the solver which character
+	      represents the start cell
+	\item \pythoninline{GOAL} a constant that tells the solver which character
+          represents the goal cell
+    \item \pythoninline{PATH} a constant that tells the solver which character
+        represents the visited cells - our taken path.
+	\item \pythoninline{solve(maze, startpos, goalpos):} starts the search for
+	      the path by calling the initial recursive search (where startpos,
+	      and goalpos are tuples with coordinates)
+	\item \pythoninline{solve_recursive(maze, currentpos, goalpos):} recursively
+	      searches for a path through the maze by backtracking
+	\item \pythoninline{findstart(maze):} returns the coordinates of the start
+	      position
+	\item \pythoninline{findgoal(maze):} returns the coordinates of the goal position
+\end{itemize}
+\pagebreak
+
+\section{Suggested Functions In  Module 3}
+Module \texttt{fileIO.py} could contain:
+\begin{itemize}
+    \item \pythoninline{MAZEFOLDER} a constant which represents the relative path to
+        the folder in which the mazes are located
+    \item \pythoninline{get_maze_list():} returns a list of filenames for
+        available mazes. This relates to the \emph{Small-ish Bonus Task 1}
+    \item \pythoninline{load_maze(filename):} returns the maze from the given file name
+        inside the \pythoninline{MAZEFOLDER}
+    \item \pythoninline{build_maze(raw_maze):} takes a maze read from a file and builds
+        the maze's grid-like structure that we need to work with, then returns the grid
+    \item \pythoninline{stringify_maze(grid):} converts a grid back into a maze that
+        can be written into a file so it looks like the others
+    \item \pythoninline{save_maze(maze, filename):} saves a maze into a file with filename in
+        the \pythoninline{MAZEFOLDER}
+    \item \pythoninline{save_solved(maze, filename):} saves a solved maze into a file with
+        file name in the \pythoninline{MAZEFOLDER}, maybe with a special \texttt{solved} suffix
+        This can of course use \pythoninline{save_maze} in the end so you don't duplicate code
+    \item \pythoninline{get_maze_grid(filename):} consecutively calls \pythoninline{load_maze()}
+        and \pythoninline{build_maze()} to return a grid. This is a convenience function
+    \item \pythoninline{save_maze_grid(grid, filename, solved=True):} consecutively calls
+        \pythoninline{stringify_maze()} and on of the save functions. Also a convenience function
+\end{itemize}
+\pagebreak
+
+\section{Suggested Functions In  Module 4}
+Module \texttt{userIO.py} could contain:
+\begin{itemize}
+	\item \pythoninline{show_welcome():} shows some introductory words, and maybe a
+	      selection of available options to choose from
+	\item \pythoninline{present_mazes(maze_list):} displays the mazes to choose from
+	\item \pythoninline{get_user_choice(maze_list):} gets the choice of the user, and
+	      checks if it is a valid choice, then returns the corresponding maze name
+	\item \pythoninline{choose_maze(maze_list):} consecutively calls
+	      \pythoninline{present_mazes} and \pythoninline{get_user_choice} to choose a maze
+	      A convenience function
+	\item \pythoninline{print_maze(maze):} prints the maze onto the terminal, however
+	      fancy you would like to make it
+	\item \pythoninline{read_maze():} reads in a maze from the user and returns it.
+	      This is related to \emph{Small-ish Bonus Task 2} and might require some more
+	      functionality / functions
+\end{itemize}
+
+\end{document}

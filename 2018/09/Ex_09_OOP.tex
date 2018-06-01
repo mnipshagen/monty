@@ -1,0 +1,59 @@
+\input{../ex_template.tex}
+\usepackage{setspace}
+
+\title{BPP Exercise 8 - 4P}
+\author{A. Hain, M. Nipshagen}
+\date{04.06.2018, 8:00}
+
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date
+\makeatother
+
+
+\newcommand\itemsub[1]{
+	\begin{itemize}
+		\item #1
+	\end{itemize}
+}
+
+% do not include solutions
+% \renewcommand\sol[1]{}
+
+
+\begin{document}
+
+The deadline for this exercise sheet is \textbf{Monday, \thedate.}
+
+%\section*{Introductory Words}
+
+
+\section{Warm-Up: The Land Before Time}
+Many many years ago, our planet was the habitat of many different types of dinosaurs.\\
+We modeled several kinds of them and their behavior (in a manner that may or may
+not be a little simplified) in a file named \texttt{dinos.py}.\\
+Look at the dino classes given in the file. State for each class the following:
+\begin{itemize}
+	\item{All superclasses}
+	\item{All subclasses}
+	\item{All classes it extends}
+	\item{All functions it can use}
+	\item{All functions it overrides}
+\end{itemize}
+
+\section{I want to ride my bicycle, I want to ride my bike}
+Implement three classes: \textit{Bike}, \textit{Bicycle} and \textit{Motorbike}.\\
+\textit{Bike} is the superclass of both \textit{Bicycle} and \textit{Motorbike}.\\
+A \textit{Bike} has a number of seats and a number of gears. It can start being ridden and
+end being ridden. Also, one is able to change the gears (to a gear number that
+actually exists.)\\
+A \textit{Bicycle}, additionally to the \textit{Bike}, has a bell that can be rung.\\
+A \textit{Motorbike}, additionally to the \textit{Bike}, has a tank that can be filled.\\
+Write a module of the classes according to the description and add another module
+that tests them with some values. Don't forget to include proper documentation!
+
+
+
+
+\end{document}
