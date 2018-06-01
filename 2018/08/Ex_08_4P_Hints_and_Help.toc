@@ -1,0 +1,7 @@
+\contentsline {section}{The Pseudocode}{2}{section*.2}
+\contentsline {section}{General Hints That Can Be More Or Less Helpful}{3}{section*.3}
+\contentsline {section}{Module Separation}{4}{section*.4}
+\contentsline {section}{Suggested Functions In Module 1}{5}{section*.5}
+\contentsline {section}{Suggested Functions In Module 2}{6}{section*.6}
+\contentsline {section}{Suggested Functions In Module 3}{7}{section*.7}
+\contentsline {section}{Suggested Functions In Module 4}{8}{section*.8}
