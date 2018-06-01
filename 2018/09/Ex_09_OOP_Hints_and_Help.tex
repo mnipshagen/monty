@@ -1,8 +1,8 @@
 \input{../ex_template.tex}
 
-\title{BPP Exercise 8 - 4P: Hints \& Help}
+\title{BPP Exercise 8 - OOP}
 \author{A. Hain, M. Nipshagen}
-\date{29.05.2018, 14:00}
+\date{04.06.2018, 14:00}
 
 \makeatletter
 \let\thetitle\@title
@@ -24,10 +24,98 @@ The deadline for this exercise sheet is \textbf{Tuesday, \thedate.}
 \vspace{12pt}\noindent
 \textbf{DISCLAIMER:} These are all just suggestions and not necessarily a complete
 or the best approach to a solution. It just offers hints, general approaches
-and ideas.
+and ideas.\\
+These are also a lot of pages of one-liners.
 \pagebreak
 
-\section{The Pseudocode}
+\section{Task 2: Changing Gears to a "valid number"}
+Whenever the new gear is not within the number of gears the bike has, throw an exception.
 
+\pagebreak
+
+\section{Task 2: Ringing the Bell}
+Ringing the bell can be done by including a new variable or even class as the bell,
+but it is also fine to just print something whenever the bell is rung.
+
+\pagebreak
+
+\section{Task 2: What Class Properties and Functions Should I Include?}
+Properties correspond to what kinds of things a class \textit{has}.
+However, it often happens that there are a few more properties only used for
+internal purposes that will need to be added to allow for a certain function to work.\\
+Functions correspond to what someone \textit{can do} with the class.
+
+\pagebreak
+
+\section{Task 3: The constants}
+The constants should be constants of the module, not the class. Just define them
+as variables atop your \texttt{knights} module before defining the class.\\
+Technically, they could also be made constants of the class
+\pagebreak
+
+\section{Task 3: KnightError}
+pass\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+;)
+
+\pagebreak
+
+\section{Task 3: Knight Class Function Heads \& Returns}
+\begin{itemize}
+	\item \pythoninline{__init__(self)}: does not return
+	\item \pythoninline{alive(self)}: returns boolean
+	\item \pythoninline{take_damage(self, damage)}: does not return / could return current health
+	\item \pythoninline{light_attack(self)}: returns tuple (damage, crit\_boolean)
+	\item \pythoninline{heavy_hit(self)}:  returns tuple (damage, crit\_boolean)
+	\item \pythoninline{all_actions(self)}: returns list of function objects
+	\item \pythoninline{__str__(self)}: returns string
+\end{itemize}
+\pagebreak
+
+\section{Task 3: The Health Property}
+Remember the \pythoninline{@property} decorator and how to define a private attribute.
+You can use the decorator and decorate a function named \texttt{health} with it,
+turning it into a property. This function then returns the value of the private health
+variable. This getter function is all you need. You don't need a setter function, since
+\pythoninline{take_damage} can access the private health property.
+\pagebreak
+
+\section{Task 3: The Critical Hit}
+You can use  \texttt{random.randint} to calculate whether it was a critical hit.
+Generate a random integer between 0 and 99 and check whether it is below the
+critical hit chance. If it is, that is a critical hit! So a critical chance of
+100 will always result in a hit, while a chance of 1 will only happen if 
+\texttt{randint} returns 0.
+
+\pagebreak
+
+\section{Task 3: all\_actions() \& available\_actions}
+The trick here is to store the function references in a list. Since you have the
+actions \texttt{light\_attack} and \texttt{heavy\_hit}, the list can be defined as\\
+\texttt{self.available\_actions = [self.light\_attack, self.heavy\_attack]}\\
+Note that the parantheses are missing. This passes the actual \textit{function object}
+(They are everywhere...). This function object is this very specific function inside
+this very specific instance, so we can do something like\\
+\pythoninline{my_knight.all_actions()[0]()}\\
+See how we just put a parentheses at the item we got from the list? We are just going
+to call the function object that is referenced in the list and it will execute that
+specific function in the specific instance of \texttt{my\_knight} we got it from.
+
+\pagebreak
+
+\section{Task 3.1 Bonus: A Subclass}
+Remember that you can call \texttt{super().\_\_init\_\_} and afterwards add any
+additional attributes you need for your class.
+
+\pagebreak
+
+\section{Task 3.1 Bonus: Description()}
+\pythoninline{description()}: returns string \small{\textit{Note there is no self ;)}}
+
+\pagebreak
+
+\section{Task 3.1 Bonus: New Attacks}
+If you want to give your knight new attacks, don't forget to update the 
+\texttt{available\_actions} list with the newly defined function, so that the
+battle code can find and call it.\\
 
 \end{document}
