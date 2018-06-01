@@ -53,7 +53,7 @@ def main():
         elif option == userIO.CREATE_A_MAZE:
             # get maze name and new raw input maze from the user
             name, maze = userIO.create_maze()
-            # create maze from the raw inout maze
+            # create maze from the raw input maze
             grid = fileIO.build_maze(maze)
             # save the maze in a new file
             fileIO.save_maze(grid, name)
