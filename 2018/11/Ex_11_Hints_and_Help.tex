@@ -1,0 +1,72 @@
+\input{../ex_template.tex}
+
+\title{BPP Exercise 11 - NumPy and Matplotlib}
+\author{A. Hain, M. Nipshagen}
+\date{18.06.2018, 10:00}
+
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date
+\makeatother
+
+\newcommand\itemsub[1]{
+	\begin{itemize}
+		\item #1
+	\end{itemize}
+}
+
+\setcounter{secnumdepth}{0}
+
+\begin{document}
+The deadline for this exercise sheet is \textbf{Tuesday, \thedate.}
+\tableofcontents
+\vspace{12pt}\noindent
+\textbf{DISCLAIMER:} These are all just suggestions and not necessarily a complete
+or the best approach to a solution. It just offers hints, general approaches
+and ideas.\\
+These are also a lot of pages of one-liners.
+\pagebreak
+
+\section{Crossed Out - Functions}
+For each of the mathematical functions, create one Python function. The broadcasting
+of numpy will handle the multiplication with a scalar as well as the power function.
+This means you kind of just have to write down the math formula in Python and it 
+should work with very little adjustments.
+
+\pagebreak
+
+\section{Markers all around - np.normal}
+Next to the center and the standard deviation, you can pass a shape parameter to
+\verb|np.normal|, which will give you then back a filled ndarray in that shape.
+
+\pagebreak
+
+\section{Markers all around - histogram, bins and width}
+The histogram function \verb|np.hist| takes the parameters bins, which can be 
+an integer, which then represents how many bins to use, and rwidth, which scales
+the width of each bar of the histogram with 1 being the full width. 
+
+\pagebreak
+
+\section{Who is that plot?!}
+You can use the output from \verb|get_x_y| directly as input to \verb|np.scatter|,
+and well you should. The function accepts the s parameter, which scales the markers
+of the plot.
+
+\pagebreak
+
+\section{Wavy Waves - Reading the plot}
+From the plot you can read the height and the width of the sine waves. They are called
+the amplitude and the period, respectively. Using this you can infer the data, that
+you need to plot those waves.
+
+\pagebreak
+
+\section{Wavy Waves - The sine function}
+When you got the amplitude and the period of the sine waves you can use them in the
+sine formula like $Amplitude * sin(period * x)$. The \verb|np.sin| function can
+apply sine to a whole array.
+
+
+\end{document}

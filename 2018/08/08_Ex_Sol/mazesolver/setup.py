@@ -1,0 +1,1 @@
+from mazesolver import __about__, __init__

@@ -1,0 +1,76 @@
+\input{../ex_template.tex}
+\usepackage{setspace}
+
+\title{BPP Exercise 10 - Time, Space and Documentation}
+\author{A. Hain, M. Nipshagen}
+\date{11.06.2018, 12:00}
+
+
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date
+\makeatother
+
+
+\newcommand\itemsub[1]{
+	\begin{itemize}
+		\item #1
+	\end{itemize}
+}
+
+% do not include solutions
+% \renewcommand\sol[1]{}
+
+
+\begin{document}
+
+The deadline for this exercise sheet is \textbf{Monday, \thedate.}
+
+\section*{Introductory Words}
+Remember that you need proper documentation to pass
+the homework. The documentation doesn't need to be \textit{perfect}, but
+everything that needs a docstring, should have a docstring.
+
+\section{Warm-Up: The Final Countdown}
+Write a script that uses the \texttt{datetime} module to make a countdown from
+10 seconds to 0 seconds in which each second the remaining time is printed.\\
+\textit{Bonus: } Make the countdown more dramatic. We don't care how exactly,
+you can get creative! (One idea would be to include sounds).
+
+
+\section{BirthdayCalc}
+Usually, when asked how old we are, we can only answer in years (if even).
+Let's get some more information on how much time we've already spent on this
+lovely planet.\\
+Write a module named \texttt{birthday\_calc} using which one can create
+\texttt{BirthdayCalc} objects that can return how much time has passed since
+one's birthday in different units.\\
+A BirthDayCalc object is initialized with a day, a month and a year and a day
+(of the birthday) and store this as a \texttt{datetime} object.
+There have to be following methods in the class:
+\begin{itemize}
+	\item \texttt{birthday\_calc}, which returns your birthday as a datetime object
+	\item \texttt{years\_since\_birth},
+	\item \texttt{months\_since\_birth},
+	\item \texttt{days\_since\_birth},
+	\item \texttt{hours\_since\_birth},
+	\item \texttt{minutes\_since\_birth} and
+	\item \texttt{seconds\_since\_birth}, each of which will return an \textbf{integer}
+	containing how much time has passed since the birthday in the respective unit.
+\end{itemize}
+
+\noindent Attached you will find a module named \texttt{birthday\_fun}. This is a test
+class which you can run to test your implementation.\\
+\textit{Bonus: }Extend \texttt{BirthDayCalc} by a function that returns the days
+left until the user's next birthday. Also extend \texttt{birthday\_fun} such
+that the user is able to use this new function.
+\textit{Note: }You do not need to take care of error handling this time. The test
+class will do this for you.\\
+\textit{Note 2: }Instead of looking out for leap years, you can assume that a
+year has exactly 365.25 days.
+
+
+
+
+\end{document}

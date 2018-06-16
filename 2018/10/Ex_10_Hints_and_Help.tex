@@ -1,0 +1,62 @@
+\input{../ex_template.tex}
+
+\title{BPP Exercise 10 - Time, Space and Documentation}
+\author{A. Hain, M. Nipshagen}
+\date{11.06.2018, 12:00}
+
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date
+\makeatother
+
+\newcommand\itemsub[1]{
+	\begin{itemize}
+		\item #1
+	\end{itemize}
+}
+
+\setcounter{secnumdepth}{0}
+
+\begin{document}
+The deadline for this exercise sheet is \textbf{Tuesday, \thedate.}
+\tableofcontents
+\vspace{12pt}\noindent
+\textbf{DISCLAIMER:} These are all just suggestions and not necessarily a complete
+or the best approach to a solution. It just offers hints, general approaches
+and ideas.\\
+These are also a lot of pages of one-liners.
+\pagebreak
+
+\section{Task 1: How to make a loop that only prints once a second}
+You could consider making a loop that runs as long as the second counter is larger than 0.\\
+Define some "starting point time" and check if already $\geq$ 1 second has passed over and
+over again and only decrease your counter if it did.
+
+\pagebreak
+
+\section{Task 3: BirthDayCalc attributes}
+You don't need a lot of attributes. It makes sense to store the birth date and
+the date of today.\\
+Since you'll need it a lot, you could also consider saving the difference between
+those two dates.
+
+\pagebreak
+
+\section{Task 3: How to get the different units}
+Get the timedelta between the birth date and today in days and build on top of this
+(you need to make a function that returns this anyway ;) ). We'll trust you with
+the calculations. Since the leapyears are approximated anyway, it does not actually
+have to be accurate to the second of your birth.
+
+\pagebreak
+
+\section{Task 3: Years and months}
+We don't recommend to calculate the months based on how many years \textit{as
+an integer} have passed because that would only give a very, very approximated
+number of months. It might make sense to build an internal private method that
+returns the years since birth as a float and then round the result of this function
+for \texttt{years\_since\_birth} or use if for further calculation in \texttt{months\_since\_birth}
+
+
+\end{document}
