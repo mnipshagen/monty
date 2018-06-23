@@ -1,0 +1,73 @@
+\input{../ex_template.tex}
+
+\title{BPP Exercise 12 - Python and Experiments}
+\author{A. Hain, M. Nipshagen}
+\date{26.06.2018, 14:00}
+
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date
+\makeatother
+
+\newcommand\itemsub[1]{
+	\begin{itemize}
+		\item #1
+	\end{itemize}
+}
+
+\setcounter{secnumdepth}{0}
+
+\begin{document}
+The deadline for this exercise sheet is \textbf{Tuesday, \thedate.}
+\tableofcontents
+\vspace{12pt}\noindent
+\textbf{DISCLAIMER:} These are all just suggestions and not necessarily a complete
+or the best approach to a solution. It just offers hints, general approaches
+and ideas.\\
+These are also a lot of pages of one-liners.
+\pagebreak
+
+\section{Dictionary and List}
+The dictionary and list to use in the experiment could look like:
+\begin{python}
+exp_values = {1:(4.5, 128, 64), 2:(2.5, 128, 192), 3:(5, 192, -192)}
+exp_idx = [1, 2, 3]
+\end{python}
+Those are not the complete dictionary and list, but should just show
+you how the two are structured.
+
+\pagebreak
+
+\section{Getting a Random Key Value}
+Once you have set up your dictionary and list, you can care about getting a random index.
+How you do this depends on your framework, but here are two examples:\\
+The \texttt{TrialHandler} object is able to hand over trials in a random fashion.\\
+The \texttt{Block} object has the method \texttt{shuffle\_trials()}.
+
+\pagebreak
+
+\section{The Circle and the Cross}
+Remember how we talked about clearing and flipping buffers? Clear the screen,
+draw your stimuli, and only then flip / draw the whole scene.
+
+\pagebreak
+
+\section{Making the Pause}
+Again there are several options here. Both frameworks have methods for time handling,
+and so does Python. So you can either take the \texttt{Stopwatch} or \texttt{Clock}, or
+use the \texttt{time} module.
+
+\pagebreak
+
+\section{Measuring Reaction Time}
+And again. There are several options to deal with this. In \texttt{Expyriment} this does
+not even need a single more line of code. Maybe have a look at the slides again.\\
+In \texttt{PsychoPy} you might have to work around a bit more. You can either use 
+\texttt{PsychoPy}'s time measuring capabilites or use Python's \texttt{time} module.
+An idea would be to take a timestamp at stimulus onset (when the stimulus
+is first shown) and when the key was hit by the user. Then take the difference of these
+two to get the reaction time.
+
+
+\end{document}
