@@ -1,0 +1,81 @@
+\input{../ex_template.tex}
+
+\title{BPP Exercise 10 - Time, Space and Documentation}
+\author{A. Hain, M. Nipshagen}
+\date{02.07.2018, 08:00}
+
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date
+\makeatother
+
+\newcommand\itemsub[1]{
+	\begin{itemize}
+		\item #1
+	\end{itemize}
+}
+
+\setcounter{secnumdepth}{0}
+
+\begin{document}
+The deadline for this exercise sheet is \textbf{Monday, \thedate.}
+\tableofcontents
+\vspace{12pt}\noindent
+\textbf{DISCLAIMER:} These are all just suggestions and not necessarily a complete
+or the best approach to a solution. It just offers hints, general approaches
+and ideas.
+\pagebreak
+
+\section{Property Summary}
+\noindent To give you an overview, a \texttt{BunnyFriend} can have following properties:
+\begin{itemize}
+	\item \texttt{name} a name (handed to the initialization method)
+	\item \texttt{\_age} an age in days (initialized with 0)
+	\item \texttt{\_fullness} stomach fullness (initialized with 2)
+	\item \texttt{\_played} how many times it's been played with (initialized with 0)
+	\item \texttt{\_played\_today} if it's been played with today (initialized with \texttt{False})
+	\item \texttt{\_mode} the mode ('happy', 'angry', 'grown\_happy' or 'grown\_angry')
+	\item \texttt{\_looks} a dictionary containing all 4 bunny illustrations corresponding to the modes
+	\item \texttt{\_interactable} if the user can interact with the bunny (initialized with \texttt{True}).
+	Make a function 'interactable' returning this value as well and mask it as a property.
+\end{itemize}
+Pay attention to which attributes are supposed to be private and which aren't.
+
+\pagebreak
+
+\section{Function Summary}
+\noindent Following functions (or similar) should be implemented into the \texttt{BunnyFriend} class:
+\begin{itemize}
+	\item \texttt{\_\_init\_\_} Initializes the \texttt{BunnyFriend} with all its properties.
+	\item \texttt{\_play} Will increase the \texttt{\_played} variable by 1 and also set
+	\texttt{\_played\_today} to \texttt{True}. Also makes the \texttt{BunnyFriend} go into happy mode.
+	\item \texttt{\_feed} If the stomach is already full (3 meals), will return \texttt{False}.
+	Will otherwise increase the \texttt{\_fullness} variable by 1 and return \texttt{True}.
+	\item \texttt{interact} Will check if the bunny is interactable and return \texttt{False} if it
+	isn't.
+	Will ask the user to enter, which interaction should be
+	performed. If the user chooses playing or feeding, a corresponding message is displayed.
+	Then the program will be paused for a second, the corresponding function is called and
+	another message is displayed after the function was executed. If the
+	user tried to feed the \texttt{BunnyFriend}, but the \texttt{\_feed} function returned \texttt{False}, the
+	message will state that the \texttt{BunnyFriend} was not hungry. If the user chose neither
+	feeding nor playing, a message will be printed that the \texttt{BunnyFriend} will be ignored for now.
+	Will return \texttt{True} at the end of the function.
+	\item \texttt{\_grow} Is called when the \texttt{BunnyFriend} grows up (if it was fed appropriately
+	for 10 days). The user will be notified that it is growing up, and after a pause of two seconds
+	the grown-up \texttt{BunnyFriend} will be revealed. If the user has played with the \texttt{BunnyFriend} for at
+	least 15 times during the 10 days, it will go into \texttt{\_grown\_happy} mode. If not,
+	it will go into \texttt{\_grown\_angry} mode. In both cases, a fitting message is displayed and
+	in both cases, the \texttt{BunnyFriend} will not be interactable anymore, as it is now off to its own
+	adventures.
+	\item \texttt{pass\_day} finishes the day of the \texttt{BunnyFriend}. It will update the stomach fullness
+	and age of the \texttt{BunnyFriend}. Each day, the fullness is reduced by 1. If the fullness becomes 0,
+	the \texttt{BunnyFriend} runs away as it was left to starve and is not interactable anymore. If it becomes
+	10 days old, it will grow. Otherwise, the mode of the bunny will be updated (to 'sad', if  it
+	was not played with during the day), the \texttt{\_played\_today} variable will be reset.
+	\item \texttt{\_\_str\_\_} prints the \texttt{BunnyFriend} status as described in the main task.
+\end{itemize}
+Pay attention to which functions are supposed to be private and which aren't.
+
+\end{document}

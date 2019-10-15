@@ -1,3 +1,8 @@
+"""
+Supplies the get_x_y function for task 1.2.3
+
+Adapted from: http://www.wolframalpha.com/input/?i=pikachu-like+curve
+"""
 import numpy as np
 
 

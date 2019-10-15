@@ -20,7 +20,7 @@
 }
 
 % do not include solutions
-\renewcommand\sol[1]{}
+% \renewcommand\sol[1]{}
 
 
 \begin{document}
@@ -73,6 +73,8 @@ calculate the following operations. Order matters.
 	\sol{\pythoninline{np.mean([a,b])}}
 \end{itemize}
 
+\sol{\pythonexternal{solution/numpy_stuff.py}}
+
 \subsection{Plot, plot away}
 \subsubsection{Crossed out}
 Plot the following functions from $-4$ to $8$ into one figure.
@@ -100,6 +102,7 @@ numpy ndarrays in the form \verb|x, y|, which are x and y coordinate pairs.
 Plot those pairs using a scatter plot, with a scale (\verb|s|) of 0.5.\\
 \emph{Note:} The function can take a few seconds to compute.
 
+\sol{\pythonexternal{solution/plot_plot_away.py}}
 
 \section{The great Plotting}
 \subsection{Wavy Waves}
@@ -128,5 +131,7 @@ wave as well. This time not just left and right, but up and down as well.
 Move the whole sine wave on a sine wave. So that the whole curve shifts to
 the left as well as up and down as if it was moving along another sine wave.\\
 This is a tricky one.
+
+\sol{\pythonexternal{solution/the_great_plotting.py}}
 
 \end{document}
